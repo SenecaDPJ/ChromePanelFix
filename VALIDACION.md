@@ -1,9 +1,12 @@
-﻿# Validación de 9.1
+﻿# Validación de 9.2
 
-Cambio acotado al lanzador, textos de diagnóstico de inicio y documentación:
+La persona mantenedora verificó en el Windows Server de destino que la corrección de confianza permite iniciar ChromePanelFix desde el paquete descargado: el lanzador solicita consentimiento para quitar Zone.Identifier y continúa al aceptarlo. La opción 3 había sido verificada como flujo completo de reparación y preparación de vigilancia; el panel de Biblioteca del Programador se muestra en las opciones 2, 3 y 4.
 
-- El CMD no contiene BOM y usa CRLF para su reconocimiento por cmd.exe.
-- El proceso PowerShell sigue respetando la política configurada. Los fallos de carga del script se capturan y muestran en un aviso.
-- No se cambió el motor de reparación ni los datos incluidos del paquete 9.0.
+Comprobaciones de distribución realizadas para esta edición:
 
-Pendiente de prueba en el Windows Server de destino: inicio desde ZIP descargado y ejecución programada. La compatibilidad con Server 2016 no está verificada.
+- Los archivos PowerShell pasan el analizador de Windows PowerShell 5.1.
+- La operación Unblock-File se comprobó con una marca Zone.Identifier de prueba.
+- El lanzador CMD se mantiene ASCII/CRLF, sin BOM.
+- El SHA-256 del ZIP se contrasta con el sidecar y se verifica que los archivos comprimidos coinciden con la carpeta de entrega.
+
+Pendiente de verificación en el servidor: eficacia real de las ejecuciones automáticas de la tarea. La compatibilidad con Windows Server 2016 no se ha comprobado. La validación sintáctica y de empaquetado no sustituye las pruebas en esos entornos.

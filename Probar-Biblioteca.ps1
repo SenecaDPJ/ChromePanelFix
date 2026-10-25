@@ -1,4 +1,4 @@
-#requires -Version 5.1
+﻿#requires -Version 5.1
 # Prueba exclusivamente la apertura: no ejecuta ninguna opcion del motor.
 $ErrorActionPreference='Stop'
 try{
