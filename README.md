@@ -1,14 +1,20 @@
 # ChromePanelFix 9.0 — GUI OPERATIVO
 
+[Español](README.md) · [English](README.en.md)
+
 **Gestiona las alertas de Google Update en Administrador del Servidor sin desactivar las actualizaciones de Chrome.**
 
 Utilidad con interfaz gráfica en PowerShell para administradores de Windows Server. Ajusta las exclusiones del recuento de servicios de Google Update en los paneles «Servidor local» y «Todos los servidores». Incluye diagnóstico, aplicación directa, vigilancia programada y reversión de sus propios ajustes.
 
 **Edición 9.0 para GitHub**, clon funcional de la 8.0 validada por el usuario. La 8.0 permanece congelada localmente.
 
+## El problema que resuelve
+
+Google Update puede aparecer como servicio automático detenido y generar avisos en «Servidor local» y «Todos los servidores». ChromePanelFix ajusta esos filtros de forma autónoma para que esos servicios dejen de contarse como alertas, conservando los componentes de actualización de Chrome.
+
 ## Descargar
 
-[Descargar ChromePanelFix 9.0 — GUI OPERATIVO](https://github.com/SenecaDPJ/scriptsgpt/raw/refs/heads/main/downloads/ChromePanelFix_9.0_GUI-OPERATIVO.zip) · [SHA-256 del ZIP](https://github.com/SenecaDPJ/scriptsgpt/blob/main/downloads/ChromePanelFix_9.0_GUI-OPERATIVO.zip.sha256)
+[Descargar ChromePanelFix 9.0 — GUI OPERATIVO](https://github.com/SenecaDPJ/ChromePanelFix/raw/refs/heads/main/downloads/ChromePanelFix_9.0_GUI-OPERATIVO.zip) · [SHA-256 del ZIP](https://github.com/SenecaDPJ/ChromePanelFix/blob/main/downloads/ChromePanelFix_9.0_GUI-OPERATIVO.zip.sha256)
 
 ![Interfaz de ChromePanelFix 9.0](Vista-previa.png)
 ## Qué hace
@@ -83,10 +89,11 @@ Interfaz: `ChromePanelFix_9.0_GUI-OPERATIVO.ps1`. Motor: `ChromePanelFix.Core.ps
 
 [Notas de versión](RELEASE_NOTES.md) · [Historial](CHANGELOG.md) · [Congelación](VERSIONES.md) · [Preparación de publicación](PUBLICACION.md) · [Contribuciones](CONTRIBUTING.md) · [Seguridad](SECURITY.md).
 
-`SHA256SUMS.txt` contiene las huellas de los archivos del paquete, excepto la del propio manifiesto. La huella del ZIP se distribuye en un archivo independiente.
+`SHA256SUMS.txt` corresponde al contenido del paquete 9.0 original: compruébelo dentro del ZIP extraído. La documentación de la rama principal puede evolucionar sin modificar ese paquete. La huella del ZIP se distribuye en un archivo independiente.
 
 ## Autoría y licencia
 
 Mantenedor: **SenecaDPJ**. Licencia **MIT**, incluida íntegramente en [LICENSE](LICENSE); identificador SPDX: MIT.
 
 Proyecto independiente, sin afiliación con Google ni Microsoft. Chrome, Google Update y Windows son marcas de sus respectivos titulares.
+
