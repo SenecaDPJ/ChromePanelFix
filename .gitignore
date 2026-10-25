@@ -1,0 +1,17 @@
+# Datos y registros de ejecución
+ui-*.jsonl
+baseline.json
+direct-state.json
+latest.json
+user.config*
+Diagnostico-*.json
+*.log
+*.tmp
+# Archivos de trabajo y paquetes generados
+work/
+*.zip
+*.zip.sha256
+Thumbs.db
+Desktop.ini
+!/downloads/*.zip
+!/downloads/*.zip.sha256
