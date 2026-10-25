@@ -1,6 +1,6 @@
-# Contribuir
+﻿# Contribuir
 
-Trabajar sobre la edición publicada 9.0 o su sucesora. Las referencias locales 8.0 y 6.0 del mantenedor están congeladas.
+Trabajar sobre la edición publicada 9.2 o su sucesora. Las referencias locales 8.0 y 6.0 del mantenedor están congeladas.
 
 Mantener Windows PowerShell 5.1, reversión selectiva, filtros ajenos, validación de cuenta y ejecución no interactiva de Watch. No eliminar ni deshabilitar componentes de Google.
 

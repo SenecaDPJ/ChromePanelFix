@@ -3,7 +3,7 @@
 .SYNOPSIS
     Excluye Google Update del recuento de Servicios de Server Manager.
 .DESCRIPTION
-    Version 9.1 GUI OPERATIVO. Modifica directamente ServicesDashboardSettings del perfil.
+    Version 9.2. Ajusta ServicesDashboardSettings del perfil para excluir los servicios de Google Update del recuento del Administrador del Servidor.
     Esquema validado con diagnostico Windows Server 2019 10.0.17763.
     Server 2016 pendiente de validacion: rechaza esquemas no reconocidos.
     No cambia servicios ni componentes de Google. La consola se cierra
@@ -320,7 +320,8 @@ function Find-SchedulerLibrary {
 function Open-WatchTaskScheduler {
  $console=Join-Path $env:SystemRoot 'System32\taskschd.msc'
  $log=Join-Path $env:TEMP 'ChromePanelFix-Biblioteca.log'
- $mmc=$null
+ $mmc=$null;$document=$null;$namespace=$null;$root=$null
+ $library=$null;$view=$null;$activeView=$null;$activeNode=$null
  try{
   if(-not (Test-Path -LiteralPath $console)){throw 'No se encuentra taskschd.msc.'}
   Write-Host 'Abriendo Biblioteca del Programador...'
@@ -328,14 +329,18 @@ function Open-WatchTaskScheduler {
   $mmc.Load($console)
   $mmc.UserControl=1
   $mmc.Show()
-  $namespace=$mmc.Document.ScopeNamespace
-  $library=Find-SchedulerLibrary $namespace ($namespace.GetRoot())
+  $document=$mmc.Document
+  $namespace=$document.ScopeNamespace
+  $root=$namespace.GetRoot()
+  $library=Find-SchedulerLibrary $namespace $root
   if($null -eq $library){throw 'MMC no ha expuesto el nodo Biblioteca.'}
-  $view=$mmc.Document.ActiveView
+  $view=$document.ActiveView
   $view.ScopeTreeVisible=$true
   # API COM de MMC: no es el metodo SelectScopeNode de la API .NET de snap-ins.
   $view.ActiveScopeNode=$library
-  $actual=[string]$mmc.Document.ActiveView.ActiveScopeNode.Name
+  $activeView=$document.ActiveView
+  $activeNode=$activeView.ActiveScopeNode
+  $actual=[string]$activeNode.Name
   if($actual -ne [string]$library.Name){throw ('MMC mantiene otro nodo activo: '+$actual)}
   $result='Biblioteca seleccionada y confirmada por MMC: '+$actual
   Write-Host $result
@@ -346,9 +351,15 @@ function Open-WatchTaskScheduler {
   Write-Host ('Operacion realizada; apertura de Biblioteca NO confirmada: '+$message)
   Write-Host ('Registro: '+$log)
  }finally{
-  # La consola queda bajo control del usuario, incluso al terminar este proceso.
-  if($null -ne $mmc -and [Runtime.InteropServices.Marshal]::IsComObject($mmc)){
-   [void][Runtime.InteropServices.Marshal]::ReleaseComObject($mmc)
+  # MMC permanece bajo control del usuario; cerrar todas las referencias COM del worker.
+  foreach($comObject in @($activeNode,$activeView,$view,$library,$root,$namespace,$document,$mmc)){
+   if($null -ne $comObject){
+    try{
+     if([Runtime.InteropServices.Marshal]::IsComObject($comObject)){
+      [void][Runtime.InteropServices.Marshal]::ReleaseComObject($comObject)
+     }
+    }catch{}
+   }
   }
  }
 }
@@ -640,7 +651,7 @@ try{
  do{
   Write-Host @'
 
- CHROMEPANELFIX | 9.1 GUI OPERATIVO - ALERTAS DE GOOGLE CHROME
+ CHROMEPANELFIX | 9.2 GUI OPERATIVO - ALERTAS DE GOOGLE CHROME
  ---------------------------------------------------------------
  PUEDE EJECUTAR 3 DIRECTAMENTE: no requiere ejecutar 1 ni 2.
  1 solo diagnostica. 2 permite programar la vigilancia por separado.
