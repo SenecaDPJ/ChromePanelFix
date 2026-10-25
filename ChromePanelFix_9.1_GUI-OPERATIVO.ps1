@@ -34,7 +34,7 @@ function New-Label {
  $label
 }
 $script:Form=New-Object Windows.Forms.Form
-$script:Form.Text='ChromePanelFix 9.0 | GUI OPERATIVO'
+$script:Form.Text='ChromePanelFix 9.1 | GUI OPERATIVO'
 $script:Form.BackColor=[Drawing.Color]::Black;$script:Form.ForeColor=$script:Palette.Green
 $script:Form.Font=$script:Fonts.General
 $script:Form.Size=New-Object Drawing.Size(1280,940)
@@ -47,7 +47,7 @@ foreach($height in @(60,64,44)){[void]$layout.RowStyles.Add((New-Object Windows.
 [void]$layout.RowStyles.Add((New-Object Windows.Forms.RowStyle([Windows.Forms.SizeType]::Percent,100)))
 [void]$layout.RowStyles.Add((New-Object Windows.Forms.RowStyle([Windows.Forms.SizeType]::Absolute,42)))
 $script:Form.Controls.Add($layout)
-$title=New-Label 'CHROMEPANELFIX  /  9.0' 'Banner'
+$title=New-Label 'CHROMEPANELFIX  /  9.1' 'Banner'
 $title.ForeColor=$script:Palette.Banner
 $layout.Controls.Add($title,0,0)
 $intro=New-Label ('Control de alertas de Google Chrome'+$script:NL+'La opcion 3 incluye reparacion, referencias, vigilancia y apertura del panel.') 'Info'
@@ -120,7 +120,7 @@ $script:Log.Dock='Fill';$script:Log.ReadOnly=$true;$script:Log.BorderStyle='None
 $script:Log.BackColor=[Drawing.Color]::Black;$script:Log.ForeColor=$script:Palette.Green
 $script:Log.Font=$script:Fonts.General;$script:Log.DetectUrls=$false;$script:Log.WordWrap=$true;$script:Log.ScrollBars='Vertical'
 $right.Controls.Add($script:Log,0,3)
-$footer=New-Label 'Chrome conserva sus actualizaciones.  |  9.0 GUI OPERATIVO | Edicion GitHub.' 'General'
+$footer=New-Label 'Chrome conserva sus actualizaciones.  |  9.1 GUI OPERATIVO | Edicion GitHub.' 'General'
 $layout.Controls.Add($footer,0,4)
 function Add-VisualLine {
  param([string]$Text,[string]$Style='Info')
