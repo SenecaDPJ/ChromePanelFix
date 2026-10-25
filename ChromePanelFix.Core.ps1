@@ -3,7 +3,7 @@
 .SYNOPSIS
     Excluye Google Update del recuento de Servicios de Server Manager.
 .DESCRIPTION
-    Version 9.0 GUI OPERATIVO. Modifica directamente ServicesDashboardSettings del perfil.
+    Version 9.1 GUI OPERATIVO. Modifica directamente ServicesDashboardSettings del perfil.
     Esquema validado con diagnostico Windows Server 2019 10.0.17763.
     Server 2016 pendiente de validacion: rechaza esquemas no reconocidos.
     No cambia servicios ni componentes de Google. La consola se cierra
@@ -640,7 +640,7 @@ try{
  do{
   Write-Host @'
 
- CHROMEPANELFIX | 9.0 GUI OPERATIVO - ALERTAS DE GOOGLE CHROME
+ CHROMEPANELFIX | 9.1 GUI OPERATIVO - ALERTAS DE GOOGLE CHROME
  ---------------------------------------------------------------
  PUEDE EJECUTAR 3 DIRECTAMENTE: no requiere ejecutar 1 ni 2.
  1 solo diagnostica. 2 permite programar la vigilancia por separado.

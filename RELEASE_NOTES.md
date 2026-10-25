@@ -1,13 +1,11 @@
-# ChromePanelFix 9.0 — GUI OPERATIVO
+﻿# ChromePanelFix 9.1 — GUI OPERATIVO
 
-Edición para GitHub, clon de la 8.0 congelada y validada por el usuario. La lógica del motor no cambia: solo identidad de versión, documentación y empaquetado.
+Corrección de distribución para Windows:
 
-- Diagnóstico, exclusiones directas de Google Update y reversión selectiva.
-- La opción 3 aplica el flujo completo, guarda referencias e instala vigilancia.
-- Opciones 2, 3 y 4 abren Biblioteca del Programador mediante MMC.
-- Vigilancia diaria a las 09:00 y al iniciar sesión; requiere sesión de la cuenta instaladora.
-- Licencia MIT, código fuente, manual, captura y ZIP verificable mediante SHA-256.
+- El lanzador CMD se guarda en ASCII/CRLF, sin BOM UTF-8.
+- Los errores de inicio de PowerShell se muestran en un aviso legible.
+- Se explica cómo quitar Mark of the Web del ZIP desde Propiedades cuando Windows lo bloquea.
+- Se mantiene la política de ejecución de la organización; el lanzador no usa -ExecutionPolicy Bypass.
+- No cambia el motor de reparación ni la funcionalidad de 9.0.
 
-Se conserva el aviso de guardar taskschd.msc al cerrar MMC: responder «No».
-Pendiente de validación: eficacia automática de la vigilancia y Windows Server 2016.
-La reparación y las aperturas fueron verificadas por el usuario en la base 8.0; las pruebas de 9.0 comprueban identidad funcional, sintaxis y empaquetado.
+Pendiente de validación: eficacia automática de la tarea y compatibilidad con Windows Server 2016.
