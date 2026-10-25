@@ -1,79 +1,52 @@
-# Cambio masivo de UPN manteniendo SMTP principal anterior
+# Eliminar Google Update
 
-## Descargar Eliminar-GoogleUpdate
+Script PowerShell para eliminar componentes de actualización automática de Google en Windows. Preparado para su revisión en el contexto de Windows Server 2016/2019; pendiente de validación funcional en esos sistemas.
 
-El archivo independiente [`Eliminar-GoogleUpdate.ps1`](./Eliminar-GoogleUpdate.ps1)
-elimina los servicios, las tareas programadas y las carpetas de Google Update
-sin desinstalar Google Chrome ni borrar sus perfiles. Antes de aplicarlo puede
-revisar las acciones mediante:
+## Alcance
+
+- Detecta, detiene y elimina los servicios `gupdate`, `gupdatem`, `GoogleUpdaterInternalService*` y `GoogleUpdaterService*`.
+- Elimina las tareas programadas cuyos nombres coinciden con `GoogleUpdateTaskMachine*` o `GoogleUpdaterTask*`.
+- Por defecto, elimina las carpetas de Google Update y GoogleUpdater contempladas por el script en Program Files, Program Files (x86) y ProgramData.
+- No incluye acciones para desinstalar Google Chrome ni borrar sus perfiles.
+
+## Requisitos
+
+- Windows y Windows PowerShell 5.1 o posterior.
+- Privilegios de administrador para aplicar los cambios.
+- Un mecanismo alternativo para mantener actualizadas las aplicaciones de Google.
+
+> Eliminar Google Update desactiva las actualizaciones automáticas que dependen de esos componentes, incluidas las correcciones de seguridad.
+
+## Revisar sin aplicar cambios
+
+Desde la carpeta donde se encuentra el script:
 
 ```powershell
 .\Eliminar-GoogleUpdate.ps1 -WhatIf
 ```
 
-Después, abra PowerShell como administrador y ejecute:
+El modo de simulación muestra las acciones propuestas; no sustituye una prueba funcional en un equipo de ensayo.
+
+## Ejecutar
+
+Abra PowerShell como administrador y ejecute:
 
 ```powershell
 .\Eliminar-GoogleUpdate.ps1
 ```
 
-> **Advertencia:** al eliminar Google Update se desactivan las actualizaciones
-> automáticas y las correcciones de seguridad de las aplicaciones de Google.
-> Hágalo únicamente si el dispositivo se actualiza mediante otro mecanismo.
-
-Este repositorio incluye un script de PowerShell para escenarios cloud-only (Entra ID + Intune + Exchange Online) donde:
-
-1. Cambias el **UPN** del usuario (por ejemplo, de `@principal.com` a `@secundario.com`).
-2. Exchange Online cambia automáticamente el **SMTP principal** al nuevo UPN.
-3. El script revierte el **SMTP principal** al valor anterior deseado.
-
-## Script
-
-- `bulk-upn-primary-smtp-swap.ps1`
-
-## Requisitos
-
-- Módulo `Microsoft.Graph.Users`
-- Módulo `ExchangeOnlineManagement`
-- Permisos adecuados:
-  - Graph: `User.ReadWrite.All`
-  - Exchange Online: permisos para `Get-Mailbox` y `Set-Mailbox`
-
-## Formato CSV
-
-Archivo CSV con estas columnas obligatorias:
-
-- `CurrentUPN`: UPN actual del usuario.
-- `TargetUPN`: nuevo UPN a aplicar.
-- `PrimarySmtpToKeep`: SMTP principal que debe quedar al final.
-
-Ejemplo:
-
-```csv
-CurrentUPN,TargetUPN,PrimarySmtpToKeep
-user@principal.com,user@secundario.com,user@principal.com
-```
-
-## Ejecución
+El script solicita confirmación para las acciones. Para conservar las carpetas del actualizador mientras elimina los servicios y las tareas:
 
 ```powershell
-./bulk-upn-primary-smtp-swap.ps1 -CsvPath ./usuarios.csv
+.\Eliminar-GoogleUpdate.ps1 -KeepFiles
 ```
 
-Prueba sin aplicar cambios:
+Para omitir las confirmaciones individuales:
 
 ```powershell
-./bulk-upn-primary-smtp-swap.ps1 -CsvPath ./usuarios.csv -WhatIf
+.\Eliminar-GoogleUpdate.ps1 -Confirm:$false
 ```
 
-## Flujo aplicado por cada usuario
+## Estado de validación
 
-1. Busca el usuario por `CurrentUPN` en Entra ID.
-2. Cambia `UserPrincipalName` a `TargetUPN`.
-3. Recupera el buzón en Exchange Online por `TargetUPN`.
-4. Fuerza que el SMTP principal final sea `PrimarySmtpToKeep`.
-5. Mantiene `TargetUPN` como alias secundario (`smtp:`) cuando sea diferente.
-
-## Nota
-
-Si hay políticas, direcciones reservadas o sincronizaciones externas que bloqueen cambios de alias/SMTP, Exchange devolverá error y el script detendrá el proceso para ese lote.
+Esta copia conserva el script recuperado de la PR #2. No se ha ejecutado sobre servicios, tareas ni carpetas del equipo, ni se ha validado funcionalmente en Windows Server 2016/2019. Eliminar los componentes no garantiza por sí solo resolver la causa de los errores originales.
