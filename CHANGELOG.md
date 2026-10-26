@@ -3,7 +3,7 @@
 ## 9.3 (previa local)
 - Añade la firma Copyright © 2026 David De Prado (Seneca DPJ) en la cabecera y LICENSE.
 - Añade un botón GitHub amarillo sobre negro con confirmación previa antes de abrir el perfil del autor.
-- Ajusta la cabecera para separar el título, reducir el botón y dejar margen interior a su borde.
+- Aísla el título en un panel izquierdo de ancho propio para evitar recortes; el bloque de firma y GitHub se acopla a la derecha.
 
 
 ## 9.2
