@@ -19,7 +19,7 @@ foreach($pair in @(@('General',1),@('Info',2),@('Banner',2),@('Menu',1),@('Exec'
  $script:Fonts[$pair[0]]=New-Object Drawing.Font('Consolas',[single](12+$pair[1]),[Drawing.FontStyle]::Regular,[Drawing.GraphicsUnit]::Point)
 }
 $script:Fonts.Signature=New-Object Drawing.Font('Segoe UI',[single]9,[Drawing.FontStyle]::Italic,[Drawing.GraphicsUnit]::Point)
-$script:Fonts.GitHub=New-Object Drawing.Font('Segoe UI',[single]9,[Drawing.FontStyle]::Bold,[Drawing.GraphicsUnit]::Point)
+$script:Fonts.GitHub=New-Object Drawing.Font('Segoe UI',[single]8,[Drawing.FontStyle]::Bold,[Drawing.GraphicsUnit]::Point)
 $script:Fonts.Exit.Dispose()
 $script:Fonts.Exit=New-Object Drawing.Font('Segoe UI Emoji',17,[Drawing.FontStyle]::Regular,[Drawing.GraphicsUnit]::Point)
 $script:Core=Join-Path $PSScriptRoot 'ChromePanelFix.Core.ps1'
@@ -52,21 +52,21 @@ foreach($height in @(60,64,44)){[void]$layout.RowStyles.Add((New-Object Windows.
 $script:Form.Controls.Add($layout)
 $header=New-Object Windows.Forms.TableLayoutPanel
 $header.Dock='Fill';$header.BackColor=[Drawing.Color]::Black;$header.ColumnCount=2
-[void]$header.ColumnStyles.Add((New-Object Windows.Forms.ColumnStyle([Windows.Forms.SizeType]::Percent,100)))
-[void]$header.ColumnStyles.Add((New-Object Windows.Forms.ColumnStyle([Windows.Forms.SizeType]::Absolute,370)))
+[void]$header.ColumnStyles.Add((New-Object Windows.Forms.ColumnStyle([Windows.Forms.SizeType]::Percent,68)))
+[void]$header.ColumnStyles.Add((New-Object Windows.Forms.ColumnStyle([Windows.Forms.SizeType]::Percent,32)))
 $layout.Controls.Add($header,0,0)
 $title=New-Label 'CHROMEPANELFIX  /  9.3' 'Banner'
 $title.ForeColor=$script:Palette.Banner;$header.Controls.Add($title,0,0)
 $brand=New-Object Windows.Forms.FlowLayoutPanel
 $brand.Dock='Fill';$brand.BackColor=[Drawing.Color]::Black;$brand.WrapContents=$false;$brand.FlowDirection='LeftToRight'
-$brand.Padding=New-Object Windows.Forms.Padding(0,14,0,0)
+$brand.Padding=New-Object Windows.Forms.Padding(0,14,14,0)
 $signature=New-Label '© 2026 David De Prado (Seneca DPJ)' 'Signature'
-$signature.Width=282;$signature.Height=32;$signature.ForeColor=$script:Palette.Gold
+$signature.Width=220;$signature.Height=28;$signature.ForeColor=$script:Palette.Gold
 $signature.TextAlign='MiddleRight';$signature.Margin=New-Object Windows.Forms.Padding(0,0,6,0)
 $brand.Controls.Add($signature)
 $script:GitHubButton=New-Object Windows.Forms.Button
 $script:GitHubButton.Text='GitHub';$script:GitHubButton.AccessibleName='Abrir perfil de GitHub de SenecaDPJ'
-$script:GitHubButton.Size=New-Object Drawing.Size(78,32);$script:GitHubButton.Font=$script:Fonts.GitHub;$script:GitHubButton.FlatStyle='Flat'
+$script:GitHubButton.Size=New-Object Drawing.Size(60,24);$script:GitHubButton.Font=$script:Fonts.GitHub;$script:GitHubButton.FlatStyle='Flat';$script:GitHubButton.FlatAppearance.BorderSize=1
 $script:GitHubButton.FlatAppearance.BorderColor=$script:Palette.Gold;$script:GitHubButton.FlatAppearance.MouseOverBackColor=$script:Palette.Gold
 $script:GitHubButton.BackColor=[Drawing.Color]::Black;$script:GitHubButton.ForeColor=$script:Palette.Gold
 $script:GitHubButton.Margin=New-Object Windows.Forms.Padding(0);$script:GitHubButton.Cursor=[Windows.Forms.Cursors]::Hand
