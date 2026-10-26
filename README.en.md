@@ -1,4 +1,4 @@
-# ChromePanelFix 9.3 — GUI OPERATIVO
+# ChromePanelFix 9.4 — GUI OPERATIVO
 
 [Español](README.md) · [English](README.en.md)
 
@@ -6,22 +6,24 @@
 
 A PowerShell graphical utility for Windows Server administrators. It adjusts service filters in the Local Server and All Servers dashboards for the current administrator profile.
 
-> **ChromePanelFix 9.3 — GUI OPERATIVO.** This version adds the author signature and a confirmed link to the GitHub profile.
+Version 9.4 adds the ChromePanelFix icon to the application window and keeps the verified 9.3 workflow.
 
 ## Download
 
-[Download ChromePanelFix 9.3](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.3) · [Repository](https://github.com/SenecaDPJ/ChromePanelFix)
+[Download ChromePanelFix 9.4](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.4) · [Repository](https://github.com/SenecaDPJ/ChromePanelFix)
 
-![ChromePanelFix 9.3 interface preview](Vista-previa.png)
+![ChromePanelFix 9.3 menu preview; its workflow is preserved in 9.4](Vista-previa.png)
+
+![ChromePanelFix icon](assets/ChromePanelFix-256.png)
 
 ## Quick start
 
-1. Download the 9.3 release ZIP and extract all files together.
+1. Download the 9.4 release ZIP and extract all files together, keeping the assets folder.
 2. Open Abrir-ChromePanelFix.cmd.
-3. If Windows marks scripts as downloaded from the Internet, the launcher asks whether you trust them. Press S to remove Zone.Identifier only from the marked .ps1 files in this folder and continue, or N to exit without changing them.
+3. If Windows marks scripts as downloaded from the Internet, the launcher asks whether you trust them. Press S to remove Zone.Identifier only from marked .ps1 files in this folder and continue, or N to exit without changing them.
 4. Choose 3 for the complete workflow; options 1 and 2 are not prerequisites.
 
-The confirmation appears when you open the launcher because standard Windows extraction does not allow this project to add a custom prompt. The operation does not change or bypass PowerShell's execution policy. If your organization's policy requires signed scripts, contact your administrator.
+The confirmation appears when opening the launcher because standard Windows extraction does not allow this project to add a custom prompt. The operation does not change or bypass PowerShell's execution policy. If your organization's policy requires signed scripts, contact your administrator.
 
 ## Options
 
@@ -35,17 +37,15 @@ The confirmation appears when you open the launcher because standard Windows ext
 
 The tool adjusts dashboard filters. It does not delete or disable Google services, tasks or files; it does not delete events or certify Chrome updates. Actual update failures must be diagnosed separately.
 
-## Process recovery
-
-If a run remains open and prevents closing the folder, use Detener-Procesos-ChromePanelFix.cmd. It lists processes identified as ChromePanelFix and asks for exact PIDs before stopping them. It does not stop Server Manager, MMC or unrelated PowerShell processes.
-
 ## Requirements and limits
 
 - Windows PowerShell 5.1, .NET Framework, Windows Forms, Server Manager and Task Scheduler.
-- Run under the administrator account whose dashboard you want to adjust. Settings are per profile; required operations request elevation.
-- Configuration was checked against Windows Server 2019 diagnostic data (build 17763). Windows Server 2016 compatibility is still unverified.
-- The task is scheduled daily at 09:00 and at logon. The effectiveness of automatic runs is still awaiting validation.
-- When closing Task Scheduler, MMC may ask to save taskschd.msc; choose No.
+- Run under the administrator account whose dashboard preferences you want to adjust. Settings are per profile; required operations request elevation.
+- Scheduled-task effectiveness and Windows Server 2016 compatibility remain unverified.
+
+## Process recovery
+
+If a run remains open and prevents closing the folder, use Detener-Procesos-ChromePanelFix.cmd. It lists processes identified as ChromePanelFix and asks for exact PIDs before stopping them. It does not stop Server Manager, MMC or unrelated PowerShell processes.
 
 ## License
 
