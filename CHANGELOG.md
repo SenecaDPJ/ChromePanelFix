@@ -1,6 +1,7 @@
 # Historial
 
 ## 9.3
+- Sustituye la vista previa por la captura del menú 9.3 proporcionada por la persona mantenedora.
 - Añade la firma Copyright © 2026 David De Prado (Seneca DPJ) en la cabecera y LICENSE.
 - Añade un botón GitHub amarillo sobre negro con confirmación previa antes de abrir el perfil del autor.
 - Aísla el título en un panel izquierdo de ancho propio para evitar recortes; el bloque de firma y GitHub se acopla a la derecha.

@@ -3,6 +3,7 @@
 - Repositorio: https://github.com/SenecaDPJ/ChromePanelFix
 - Descripción: Limpia "Administrador del Servidor" de molestos errores sobre Chrome.
 - Versión: 9.3 GUI OPERATIVO.
+- Vista previa: captura del menú 9.3 facilitada por la persona mantenedora.
 - Mantenedor: SenecaDPJ.
 - Licencia: MIT.
 - Sistema: Windows Server; Windows PowerShell 5.1.

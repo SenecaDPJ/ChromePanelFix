@@ -1,6 +1,6 @@
 # ChromePanelFix 9.3 — GUI OPERATIVO
 
-Se añade la firma © 2026 David De Prado (Seneca DPJ) y un botón GitHub con confirmación antes de abrir el perfil del autor. El título ocupa un panel izquierdo propio; la firma y el botón quedan en un panel separado a la derecha, dentro del lienzo y sin tapar el nombre de la aplicación. El resto del comportamiento se basa en la 9.2.
+Se añade la firma © 2026 David De Prado (Seneca DPJ) y un botón GitHub con confirmación antes de abrir el perfil del autor. El título ocupa un panel izquierdo propio; la firma y el botón quedan en un panel separado a la derecha, dentro del lienzo y sin tapar el nombre de la aplicación. El resto del comportamiento se basa en la 9.2. La vista previa del README se sustituyó por la captura del menú 9.3 proporcionada por la persona mantenedora.
 
 La tarea automática se programa para las 09:00 y al iniciar sesión. Su eficacia en ejecuciones automáticas sigue pendiente de verificación; la compatibilidad con Windows Server 2016 también está pendiente.
 
