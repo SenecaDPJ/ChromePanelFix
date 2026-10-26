@@ -12,6 +12,8 @@ A PowerShell graphical utility for Windows Server administrators. It adjusts ser
 
 Preview of the menu introduced in 9.0; the menu and its options remain unchanged in 9.2.
 
+![ChromePanelFix menu preview](Vista-previa.png)
+
 ## Quick start
 
 1. Download the 9.2 release ZIP and extract all files together.
