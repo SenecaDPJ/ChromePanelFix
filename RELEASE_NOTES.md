@@ -1,6 +1,6 @@
 # ChromePanelFix 9.3 — previa local de interfaz
 
-Se añade la firma © 2026 David De Prado (Seneca DPJ) y un botón GitHub con confirmación antes de abrir el perfil del autor. La cabecera distribuye el espacio en columnas para que el título no se solape; el botón se reduce a 60 × 24 y queda separado del borde. El resto del comportamiento se basa en la 9.2. Esta previa aún no se ha publicado ni validado en el servidor. La eficacia de las ejecuciones automáticas y la compatibilidad con Windows Server 2016 siguen pendientes.
+Se añade la firma © 2026 David De Prado (Seneca DPJ) y un botón GitHub con confirmación antes de abrir el perfil del autor. El título usa un panel izquierdo propio de 520 px; la firma y el botón van en un panel separado a la derecha. El botón mide 60 × 24 y queda separado del borde. El resto del comportamiento se basa en la 9.2. Esta previa aún no se ha publicado ni validado en el servidor. La eficacia de las ejecuciones automáticas y la compatibilidad con Windows Server 2016 siguen pendientes.
 
 ﻿# ChromePanelFix 9.2 — GUI OPERATIVO
 
