@@ -1,5 +1,7 @@
 ﻿# Política de versiones
 
+- 9.3 es una previa local basada en 9.2; no está publicada.
+
 - 9.2 integra el consentimiento interactivo para retirar Zone.Identifier, limpieza de referencias MMC y recuperación de procesos.
 - 9.1 corrige el BOM del lanzador CMD y los errores de inicio.
 - 9.0 es la primera edición publicada en GitHub.
