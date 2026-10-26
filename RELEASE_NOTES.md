@@ -1,3 +1,7 @@
+# ChromePanelFix 9.3 — previa local de interfaz
+
+Se añade la firma © 2026 David De Prado (Seneca DPJ) y un botón GitHub con confirmación antes de abrir el perfil del autor. El resto del comportamiento se basa en la 9.2. Esta previa aún no se ha publicado ni validado en el servidor. La eficacia de las ejecuciones automáticas y la compatibilidad con Windows Server 2016 siguen pendientes.
+
 ﻿# ChromePanelFix 9.2 — GUI OPERATIVO
 
 ## Español
