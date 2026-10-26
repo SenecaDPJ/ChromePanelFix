@@ -12,6 +12,8 @@ Utilidad gráfica en PowerShell para administradores de Windows Server. Ajusta l
 
 Vista previa del menú presentado en la 9.0; el menú y sus opciones se conservan en la 9.2.
 
+![Vista previa del menú de ChromePanelFix](Vista-previa.png)
+
 ## Inicio rápido
 
 1. Descargue el ZIP de la Release 9.2 y extraiga todos sus archivos juntos.
