@@ -1,4 +1,4 @@
-﻿# ChromePanelFix 9.2 — GUI OPERATIVO
+﻿# ChromePanelFix 9.3 — GUI OPERATIVO · Local preview
 
 [Español](README.md) · [English](README.en.md)
 
@@ -6,17 +6,17 @@
 
 A PowerShell graphical utility for Windows Server administrators. It adjusts service filters in the Local Server and All Servers dashboards for the current administrator profile.
 
+> **Local 9.3 preview:** this build has not been released. The link below points to the stable 9.2 version.
+
 ## Download
 
 [Download ChromePanelFix 9.2](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.2) · [Repository](https://github.com/SenecaDPJ/ChromePanelFix)
 
-Preview of the menu introduced in 9.0; the menu and its options remain unchanged in 9.2.
-
-![ChromePanelFix menu preview](Vista-previa.png)
+Base screenshot from interface 9.0; this 9.3 preview adds the author signature and GitHub link to the header.
 
 ## Quick start
 
-1. Download the 9.2 release ZIP and extract all files together.
+1. To try this preview, keep all files from the 9.3 folder together. The 9.2 release linked above is the published stable version.
 2. Open Abrir-ChromePanelFix.cmd.
 3. If Windows marks scripts as downloaded from the Internet, the launcher asks whether you trust them. Press S to remove Zone.Identifier only from the marked .ps1 files in this folder and continue, or N to exit without changing them.
 4. Choose 3 for the complete workflow; options 1 and 2 are not prerequisites.
@@ -49,4 +49,4 @@ If a run remains open and prevents closing the folder, use Detener-Procesos-Chro
 
 ## License
 
-Maintained by SenecaDPJ under the MIT License. Independent project, not affiliated with Google or Microsoft.
+Copyright © 2026 David De Prado (Seneca DPJ). MIT License. Independent project, not affiliated with Google or Microsoft.
