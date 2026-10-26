@@ -50,16 +50,12 @@ foreach($height in @(60,64,44)){[void]$layout.RowStyles.Add((New-Object Windows.
 [void]$layout.RowStyles.Add((New-Object Windows.Forms.RowStyle([Windows.Forms.SizeType]::Percent,100)))
 [void]$layout.RowStyles.Add((New-Object Windows.Forms.RowStyle([Windows.Forms.SizeType]::Absolute,42)))
 $script:Form.Controls.Add($layout)
-$header=New-Object Windows.Forms.TableLayoutPanel
-$header.Dock='Fill';$header.BackColor=[Drawing.Color]::Black;$header.ColumnCount=2
-[void]$header.ColumnStyles.Add((New-Object Windows.Forms.ColumnStyle([Windows.Forms.SizeType]::Percent,68)))
-[void]$header.ColumnStyles.Add((New-Object Windows.Forms.ColumnStyle([Windows.Forms.SizeType]::Percent,32)))
+$header=New-Object Windows.Forms.Panel
+$header.Dock='Fill';$header.BackColor=[Drawing.Color]::Black
 $layout.Controls.Add($header,0,0)
-$title=New-Label 'CHROMEPANELFIX  /  9.3' 'Banner'
-$title.ForeColor=$script:Palette.Banner;$header.Controls.Add($title,0,0)
 $brand=New-Object Windows.Forms.FlowLayoutPanel
-$brand.Dock='Fill';$brand.BackColor=[Drawing.Color]::Black;$brand.WrapContents=$false;$brand.FlowDirection='LeftToRight'
-$brand.Padding=New-Object Windows.Forms.Padding(0,14,14,0)
+$brand.Dock='Right';$brand.Width=320;$brand.BackColor=[Drawing.Color]::Black
+$brand.WrapContents=$false;$brand.FlowDirection='LeftToRight';$brand.Padding=New-Object Windows.Forms.Padding(0,14,14,0)
 $signature=New-Label '© 2026 David De Prado (Seneca DPJ)' 'Signature'
 $signature.Width=220;$signature.Height=28;$signature.ForeColor=$script:Palette.Gold
 $signature.TextAlign='MiddleRight';$signature.Margin=New-Object Windows.Forms.Padding(0,0,6,0)
@@ -73,7 +69,11 @@ $script:GitHubButton.Margin=New-Object Windows.Forms.Padding(0);$script:GitHubBu
 $script:GitHubButton.Add_MouseEnter({$script:GitHubButton.BackColor=$script:Palette.Gold;$script:GitHubButton.ForeColor=[Drawing.Color]::Black})
 $script:GitHubButton.Add_MouseLeave({$script:GitHubButton.BackColor=[Drawing.Color]::Black;$script:GitHubButton.ForeColor=$script:Palette.Gold})
 $script:GitHubButton.Add_Click({$answer=[Windows.Forms.MessageBox]::Show(('¿Desea abrir el perfil de GitHub de David De Prado (Seneca DPJ)?'+$script:NL+'https://github.com/SenecaDPJ'),'Abrir perfil de GitHub',[Windows.Forms.MessageBoxButtons]::YesNo,[Windows.Forms.MessageBoxIcon]::Question);if($answer -eq [Windows.Forms.DialogResult]::Yes){try{Start-Process 'https://github.com/SenecaDPJ' -ErrorAction Stop | Out-Null}catch{Add-VisualLine $_.Exception.Message 'Exec'}}})
-$brand.Controls.Add($script:GitHubButton);$header.Controls.Add($brand,1,0)
+$brand.Controls.Add($script:GitHubButton);$header.Controls.Add($brand)
+$title=New-Label 'CHROMEPANELFIX  /  9.3' 'Banner'
+$title.Dock='Left';$title.Width=520;$title.Margin=New-Object Windows.Forms.Padding(0)
+$title.ForeColor=$script:Palette.Banner;$title.AutoEllipsis=$false
+$header.Controls.Add($title);$title.BringToFront()
 $intro=New-Label ('Control de alertas de Google Chrome'+$script:NL+'La opcion 3 incluye reparacion, referencias, vigilancia y apertura del panel.') 'Info'
 $intro.ForeColor=$script:Palette.Info;$layout.Controls.Add($intro,0,1)
 $pending=New-Label 'PENDIENTE: verificar la eficacia automatica de la tarea programada.' 'Banner'
