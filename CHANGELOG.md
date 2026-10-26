@@ -1,5 +1,10 @@
 ﻿# Historial
 
+## 9.3 (previa local)
+- Añade la firma Copyright © 2026 David De Prado (Seneca DPJ) en la cabecera y LICENSE.
+- Añade un botón GitHub amarillo sobre negro con confirmación previa antes de abrir el perfil del autor.
+
+
 ## 9.2
 - El lanzador pregunta si se confía en los scripts extraídos con Zone.Identifier y, solo con respuesta afirmativa, lo retira de los .ps1 marcados de la carpeta.
 - No modifica ni elude la política de ejecución de PowerShell.
