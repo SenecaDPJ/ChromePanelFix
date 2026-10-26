@@ -3,7 +3,7 @@
 .SYNOPSIS
     Excluye Google Update del recuento de Servicios de Server Manager.
 .DESCRIPTION
-    Version 9.2. Ajusta ServicesDashboardSettings del perfil para excluir los servicios de Google Update del recuento del Administrador del Servidor.
+    Version 9.3. Ajusta ServicesDashboardSettings del perfil para excluir los servicios de Google Update del recuento del Administrador del Servidor.
     Esquema validado con diagnostico Windows Server 2019 10.0.17763.
     Server 2016 pendiente de validacion: rechaza esquemas no reconocidos.
     No cambia servicios ni componentes de Google. La consola se cierra
@@ -651,7 +651,7 @@ try{
  do{
   Write-Host @'
 
- CHROMEPANELFIX | 9.2 GUI OPERATIVO - ALERTAS DE GOOGLE CHROME
+ CHROMEPANELFIX | 9.3 GUI OPERATIVO - ALERTAS DE GOOGLE CHROME
  ---------------------------------------------------------------
  PUEDE EJECUTAR 3 DIRECTAMENTE: no requiere ejecutar 1 ni 2.
  1 solo diagnostica. 2 permite programar la vigilancia por separado.

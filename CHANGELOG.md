@@ -1,4 +1,10 @@
-﻿# Historial
+# Historial
+
+## 9.3
+- Añade la firma Copyright © 2026 David De Prado (Seneca DPJ) en la cabecera y LICENSE.
+- Añade un botón GitHub amarillo sobre negro con confirmación previa antes de abrir el perfil del autor.
+- Aísla el título en un panel izquierdo de ancho propio para evitar recortes; el bloque de firma y GitHub se acopla a la derecha.
+
 
 ## 9.2
 - El lanzador pregunta si se confía en los scripts extraídos con Zone.Identifier y, solo con respuesta afirmativa, lo retira de los .ps1 marcados de la carpeta.

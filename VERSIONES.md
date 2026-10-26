@@ -1,4 +1,6 @@
-﻿# Política de versiones
+# Política de versiones
+
+- 9.3 es una edición basada en 9.2 que añade firma, enlace confirmado a GitHub y la cabecera ajustada para que el nombre de la aplicación quede visible.
 
 - 9.2 integra el consentimiento interactivo para retirar Zone.Identifier, limpieza de referencias MMC y recuperación de procesos.
 - 9.1 corrige el BOM del lanzador CMD y los errores de inicio.
