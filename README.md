@@ -1,4 +1,4 @@
-﻿# ChromePanelFix 9.3 — GUI OPERATIVO · Previa local
+# ChromePanelFix 9.3 — GUI OPERATIVO
 
 [Español](README.md) · [English](README.en.md)
 
@@ -6,17 +6,17 @@
 
 Utilidad gráfica en PowerShell para administradores de Windows Server. Ajusta los filtros de servicios de los paneles «Servidor local» y «Todos los servidores» en el perfil del administrador actual.
 
-> **Previa local 9.3:** esta edición aún no está publicada. El enlace siguiente lleva a la versión estable 9.2.
+> **ChromePanelFix 9.3 — GUI OPERATIVO.** Esta versión incorpora la firma del autor y un acceso confirmado al perfil de GitHub.
 
 ## Descargar
 
-[Descargar ChromePanelFix 9.2](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.2) · [Repositorio](https://github.com/SenecaDPJ/ChromePanelFix)
+[Descargar ChromePanelFix 9.3](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.3) · [Repositorio](https://github.com/SenecaDPJ/ChromePanelFix)
 
-Captura base de la interfaz 9.0; esta previa 9.3 añade la firma del autor y el acceso a GitHub en la cabecera.
+![Vista previa de la interfaz ChromePanelFix 9.3](Vista-previa.png)
 
 ## Inicio rápido
 
-1. Para probar esta previa, mantenga juntos todos los archivos de la carpeta 9.3. La Release 9.2 enlazada arriba es la versión estable publicada.
+1. Descargue el ZIP de la Release 9.3 y extraiga todos sus archivos juntos.
 2. Abra Abrir-ChromePanelFix.cmd.
 3. Si Windows marca scripts como procedentes de Internet, el lanzador pregunta si confía en ellos. Responda S para retirar Zone.Identifier solo de los archivos .ps1 marcados en esta carpeta y continuar; responda N para salir sin modificarlos.
 4. Elija 3 para el flujo completo; no necesita ejecutar antes 1 ni 2.

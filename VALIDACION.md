@@ -1,8 +1,12 @@
-# Validación y estado de 9.3 (previa local)
+# Validación y estado de 9.3
 
 ## 9.3
 
-El cambio de interfaz y la firma están implementados en esta copia local. No se ha ejecutado en el servidor ni se ha probado el botón de GitHub. La generación de una captura real quedó bloqueada por la política de ejecución de Windows PowerShell en este entorno; no se modificó ni se eludió esa política. La eficacia de la tarea automática y la compatibilidad con Windows Server 2016 siguen pendientes.
+La persona mantenedora confirmó que la distribución de cabecera evita que el título quede tapado. La imagen Vista-previa.png es una representación de la interfaz 9.3 basada en la captura previa y con la cabecera actualizada para reflejar el título, la firma y el botón GitHub; no sustituye a una captura de ejecución de esta versión. El botón solicita confirmación antes de abrir el perfil.
+
+El lanzador conserva la comprobación condicional de Zone.Identifier: si los .ps1 extraídos tienen esa marca, pregunta si se confía en ellos y, con respuesta S, la retira solo de esos archivos; con N, sale sin modificarlos. Si no detecta la marca, no pregunta. No cambia ni elude la política de ejecución de PowerShell.
+
+La eficacia de las ejecuciones automáticas de la tarea sigue pendiente de verificación. La compatibilidad con Windows Server 2016 no se ha comprobado.
 
 ## Base 9.2: validación anterior
 
