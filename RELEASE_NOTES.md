@@ -1,23 +1,17 @@
-# ChromePanelFix 9.3 — GUI OPERATIVO
-
-Se añade la firma © 2026 David De Prado (Seneca DPJ) y un botón GitHub con confirmación antes de abrir el perfil del autor. El título ocupa un panel izquierdo propio; la firma y el botón quedan en un panel separado a la derecha, dentro del lienzo y sin tapar el nombre de la aplicación. El resto del comportamiento se basa en la 9.2. La vista previa del README se sustituyó por la captura del menú 9.3 proporcionada por la persona mantenedora.
-
-La tarea automática se programa para las 09:00 y al iniciar sesión. Su eficacia en ejecuciones automáticas sigue pendiente de verificación; la compatibilidad con Windows Server 2016 también está pendiente.
-
-﻿# ChromePanelFix 9.2 — GUI OPERATIVO
+# ChromePanelFix 9.4 — GUI OPERATIVO
 
 ## Español
 
-La 9.2 integra la corrección de descarga probada: si Windows marca scripts extraídos con Zone.Identifier, Abrir-ChromePanelFix.cmd pregunta si el usuario confía en ellos. Con S, retira la marca solo de los .ps1 afectados en la carpeta y continúa; con N, sale sin modificarlos. No cambia ni omite la política de ejecución.
+La versión 9.4 incorpora el icono de ChromePanelFix en la ventana. Conserva el flujo funcional verificado de la 9.3: diagnóstico de solo lectura, reparación completa, creación y comprobación de la tarea propia, reversión y acceso a las vistas correspondientes del Administrador del Servidor y del Programador de tareas.
 
-También incluye la liberación ordenada de referencias MMC y una herramienta de recuperación que lista procesos de ChromePanelFix y exige seleccionar sus PID antes de cerrarlos.
+El paquete incluye el icono multirresolución y la vista previa del menú funcional conservado de 9.3.
 
-Se conserva el comportamiento funcional de la 9.1. La eficacia de la tarea automática y la compatibilidad con Windows Server 2016 siguen pendientes de validar.
+**Pendiente de verificar:** eficacia de las ejecuciones automáticas de la tarea y compatibilidad con Windows Server 2016. Licencia MIT.
 
 ## English
 
-Version 9.2 includes the tested download fix: if Windows marks extracted scripts with Zone.Identifier, Abrir-ChromePanelFix.cmd asks whether the user trusts them. Pressing S removes the mark only from affected .ps1 files in the folder and continues; N exits without changing them. It does not change or bypass execution policy.
+Version 9.4 adds the ChromePanelFix icon to the application window. It preserves the verified 9.3 workflow: read-only diagnosis, complete repair, creation and verification of the tool's task, undo, and access to the relevant Server Manager and Task Scheduler views.
 
-It also includes orderly MMC reference cleanup and a recovery utility that lists ChromePanelFix processes and requires selecting their PIDs before stopping them.
+The package includes the multi-resolution icon and the menu preview of the preserved 9.3 workflow.
 
-The 9.1 functional behavior is preserved. Scheduled-task effectiveness and Windows Server 2016 compatibility remain unverified.
+**Still to verify:** scheduled-task effectiveness and Windows Server 2016 compatibility. MIT License.
