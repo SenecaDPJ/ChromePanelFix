@@ -3,7 +3,7 @@
 .SYNOPSIS
     Excluye Google Update del recuento de Servicios de Server Manager.
 .DESCRIPTION
-    Version 9.4. Ajusta ServicesDashboardSettings del perfil para excluir los servicios de Google Update del recuento del Administrador del Servidor.
+    Version 9.5. Ajusta ServicesDashboardSettings del perfil para excluir los servicios de Google Update del recuento del Administrador del Servidor.
     Esquema validado con diagnostico Windows Server 2019 10.0.17763.
     Server 2016 pendiente de validacion: rechaza esquemas no reconocidos.
     No cambia servicios ni componentes de Google. La consola se cierra
@@ -11,9 +11,10 @@
 #>
 [CmdletBinding(SupportsShouldProcess=$true)]
 param(
- [ValidateSet('Menu','Diagnose','Prepare','Apply','Watch','Undo')][string]$Action='Menu',
+ [ValidateSet('Menu','Diagnose','Prepare','ApplyManual','Apply','Watch','Undo')][string]$Action='Menu',
  [string]$ExpectedSid,
- [ValidatePattern('^[a-fA-F0-9]{32}$')][string]$UiSession
+ [ValidatePattern('^[a-fA-F0-9]{32}$')][string]$UiSession,
+ [switch]$SkipManager
 )
 Set-StrictMode -Version Latest
 $ErrorActionPreference='Stop'
@@ -50,10 +51,11 @@ function Test-Admin {
  $p.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 function Invoke-Elevated {
- param([string]$Requested)
- if($Action -eq 'Watch'){throw 'La tarea no puede solicitar UAC. Instalela con la opcion 2.'}
+ param([string]$Requested,[switch]$SkipManager)
+ if($Action -eq 'Watch'){throw 'La tarea no puede solicitar UAC. Instalela con la opcion 3.'}
  $exe=Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
  $arguments='-NoProfile -File "'+$script:Source+'" -Action '+$Requested+' -ExpectedSid "'+$script:Sid+'"'
+ if($SkipManager){$arguments+=' -SkipManager'}
  if($script:locked){$script:mutex.ReleaseMutex();$script:locked=$false}
  try{
   $process=Start-Process -FilePath $exe -Verb RunAs -ArgumentList $arguments -Wait -PassThru
@@ -390,7 +392,7 @@ function Invoke-CompleteSolution {
  $tasks=@(Get-OwnTask)
  if($tasks.Count -gt 0){
   Assert-OwnTask $tasks[0]
-  if($tasks[0].State -eq 'Running'){throw 'La vigilancia se esta ejecutando. Espere y vuelva a elegir 3.'}
+  if($tasks[0].State -eq 'Running'){throw 'La vigilancia se esta ejecutando. Espere y vuelva a elegir 4.'}
  }
  if(-not $PSCmdlet.ShouldProcess('Filtros, vigilancia y Administrador del Servidor','Aplicar la solucion completa')){return}
  try{
@@ -405,8 +407,39 @@ function Invoke-CompleteSolution {
   Write-Host 'Proceso completo: filtros procesados, vigilancia instalada y comprobada, apertura del panel solicitada.' -ForegroundColor Green
   Write-Host 'Compruebe los recuadros Servidor local y Todos los servidores.'
  }catch{
-  throw ('Proceso incompleto: '+$_.Exception.Message+' Los pasos ya aplicados se conservan; puede volver a ejecutar 3.')
+  throw ('Proceso incompleto: '+$_.Exception.Message+' Los pasos ya aplicados se conservan; puede volver a ejecutar 4.')
  }
+}
+
+function Invoke-ManualSolution {
+ if($WhatIfPreference){
+  [void]$PSCmdlet.ShouldProcess('Filtros de Google Update','Aplicar la solucion manual sin crear tarea programada')
+  return
+ }
+ if(-not (Test-Admin)){Invoke-Elevated 'ApplyManual' -SkipManager:$SkipManager;return}
+ $manager=Join-Path $env:SystemRoot 'System32\ServerManager.exe'
+ $tasks=@(Get-OwnTask)
+ if($tasks.Count -gt 1){throw 'Hay mas de una tarea propia con el mismo nombre. No se modifica.'}
+ if($tasks.Count -eq 1){
+  Assert-OwnTask $tasks[0]
+  if($tasks[0].State -eq 'Running'){throw 'La vigilancia se esta ejecutando. Espere y vuelva a elegir 2.'}
+  Write-Host 'Hay una tarea de vigilancia existente; esta operacion manual no la modifica.'
+ }
+ if(-not $PSCmdlet.ShouldProcess('Filtros de Google Update','Aplicar la solucion manual sin crear tarea programada')){return}
+ Write-Host '[1/2] Aplicar o comprobar la reparacion de los filtros de Google Update...'
+ Invoke-DirectSolution
+ if($SkipManager){
+  Write-Host '[2/2] Se omite la apertura del Administrador del Servidor por eleccion del usuario.'
+ }else{
+  Write-Host '[2/2] Abriendo Administrador del Servidor...'
+  try{
+   Start-Process -FilePath $manager -WindowStyle Normal -ErrorAction Stop | Out-Null
+   Write-Host 'Solucion aplicada. Administrador del Servidor abierto.' -ForegroundColor Green
+  }catch{
+   Write-Host ('Solucion aplicada; no se pudo abrir el Administrador del Servidor: '+$_.Exception.Message) -ForegroundColor Yellow
+  }
+ }
+ Write-Host 'Solucion manual completada. No se ha creado ni actualizado ninguna tarea programada.' -ForegroundColor Green
 }
 
 function Confirm-Action24 {
@@ -425,7 +458,7 @@ function Confirm-Action24 {
  Write-Host 'Operacion terminada y verificada.'
 }
 function Run-Action {
- param([string]$Selected)
+ param([string]$Selected,[switch]$SkipManager)
  if($Selected -in @('Prepare','Undo') -and -not $WhatIfPreference -and -not (Test-Admin)){Invoke-Elevated $Selected;return}
  try{
   switch($Selected){
@@ -434,8 +467,12 @@ function Run-Action {
     Prepare-Watch
     if(-not $WhatIfPreference -and $script:PrepareCompleted){Confirm-Action24 'Prepare';Open-WatchTaskScheduler}
    }
+   ApplyManual{
+    Write-Host 'EJECUCION MANUAL: aplica los filtros y no crea ni actualiza una tarea programada.' -ForegroundColor Cyan
+    Invoke-ManualSolution -SkipManager:$SkipManager
+   }
    Apply{
-    Write-Host 'EJECUCION DIRECTA: no necesita ejecutar antes las opciones 1 ni 2.' -ForegroundColor Cyan
+    Write-Host 'EJECUCION DIRECTA: no necesita ejecutar antes las opciones 1, 2 ni 3.' -ForegroundColor Cyan
     Write-Host 'Incluye reparacion, referencias, tarea de vigilancia y apertura del Administrador del Servidor.'
     Invoke-CompleteSolution
    }
@@ -444,7 +481,7 @@ function Run-Action {
   }
  }catch [UnauthorizedAccessException]{
   if(Test-Admin){throw}
-  Invoke-Elevated $Selected
+  Invoke-Elevated $Selected -SkipManager:$SkipManager
  }
 }
 # Lectura/escritura NRBF sin BinaryFormatter ni instanciacion de tipos del archivo.
@@ -644,24 +681,25 @@ try{
  try{$locked=$mutex.WaitOne(0)}catch [Threading.AbandonedMutexException]{$locked=$true}
  if(-not $locked){throw 'Otra ejecucion de esta herramienta esta activa en esta sesion.'}
  if($Action -ne 'Menu'){
-  try{Run-Action $Action;Write-VisualEvent -Kind Completed -Text 'Operacion completada.'}
+  try{Run-Action $Action -SkipManager:$SkipManager;Write-VisualEvent -Kind Completed -Text 'Operacion completada.'}
   catch{Write-VisualEvent -Kind Error -Text $_.Exception.Message;throw}
   return
  }
  do{
   Write-Host @'
 
- CHROMEPANELFIX | 9.4 GUI OPERATIVO - ALERTAS DE GOOGLE CHROME
+ CHROMEPANELFIX | 9.5 GUI OPERATIVO - ALERTAS DE GOOGLE CHROME
  ---------------------------------------------------------------
- PUEDE EJECUTAR 3 DIRECTAMENTE: no requiere ejecutar 1 ni 2.
- 1 solo diagnostica. 2 permite programar la vigilancia por separado.
- 3 repara, guarda referencias, programa vigilancia y abre el panel.
+ 2 aplica la solucion sin crear una tarea programada.
+ 3 guarda referencias y programa la vigilancia por separado.
+ 4 aplica la solucion completa y programa la vigilancia.
  ---------------------------------------------------------------
  1. Diagnosticar estado servicios Google Chrome en Administrador del Servidor (solo lectura)
- 2. Guardar referencias y crear tarea de vigilancia (09:00 y al iniciar sesion)
- 3. Ejecutar solucion completa (reparacion + vigilancia + abrir panel)
- 4. DESHACER: Eliminar referencias y tarea programada
- 5. Salir
+ 2. Aplicar solucion manual (sin crear tarea programada)
+ 3. Guardar referencias y crear tarea de vigilancia (09:00 y al iniciar sesion)
+ 4. Ejecutar solucion completa (reparacion + vigilancia + abrir panel)
+ 5. DESHACER: Eliminar referencias y tarea programada
+ 6. Salir
 '@
   $choice=Read-Host 'Opcion'
   try{
@@ -673,15 +711,21 @@ try{
       if($letter -eq 'A'){Start-Process -FilePath (Join-Path $env:SystemRoot 'System32\ServerManager.exe') -WindowStyle Normal | Out-Null}
      }while($letter -ne 'V')
     }
-    '2'{Run-Action 'Prepare'}
-    '3'{Run-Action 'Apply'}
-    '4'{Run-Action 'Undo'}
-    '5'{}
-    default{Write-Warning 'Elija del 1 al 5.'}
+    '2'{
+     $open=Read-Host 'Aplicar y abrir Administrador del Servidor? (S/N)'
+     if($open -match '^(?i)s(i)?$'){Run-Action 'ApplyManual'}
+     elseif($open -match '^(?i)n(o)?$'){Run-Action 'ApplyManual' -SkipManager}
+     else{Write-Host 'Operacion cancelada.'}
+    }
+    '3'{Run-Action 'Prepare'}
+    '4'{Run-Action 'Apply'}
+    '5'{Run-Action 'Undo'}
+    '6'{}
+    default{Write-Warning 'Elija del 1 al 6; para la solucion manual, elija 2.'}
    }
   }catch{Write-Warning $_.Exception.Message}
-  if($choice -ne '5'){[void](Read-Host 'Pulse Entrar para continuar')}
- }while($choice -ne '5')
+  if($choice -ne '6'){[void](Read-Host 'Pulse Entrar para continuar')}
+ }while($choice -ne '6')
 }finally{if($locked){$mutex.ReleaseMutex()};$mutex.Dispose()}
 
 

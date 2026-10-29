@@ -1,10 +1,12 @@
-# Publicación de ChromePanelFix 9.4
+# Publicación de ChromePanelFix 9.5
 
 - Repositorio: https://github.com/SenecaDPJ/ChromePanelFix
-- Release: https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.4
-- Versión: 9.4 GUI OPERATIVO.
+- Rama propuesta: `codex/9.5-manual-solution`.
+- PR propuesta: `ChromePanelFix 9.5: add manual solution option`.
+- Release y etiqueta previstas: `v9.5` — `ChromePanelFix 9.5 — GUI OPERATIVO`.
+- Assets: `ChromePanelFix_9.5_GUI-OPERATIVO.zip` y su sidecar SHA-256.
 - Licencia: MIT.
-- Requisitos: Windows PowerShell 5.1 y componentes de Windows Server indicados en README.md.
-- Distribución: ZIP de la Release y su archivo SHA-256.
 
-La 9.4 incorpora el icono de ChromePanelFix en la ventana y conserva el flujo verificado de la versión 9.3. La eficacia automática de la tarea programada y la compatibilidad con Windows Server 2016 quedan indicadas como pendientes de verificación.
+La 9.5 añade la aplicación manual de la solución sin crear ni actualizar una tarea programada. Su submenú permite abrir el Administrador del Servidor al terminar o dejarlo cerrado. La vigilancia independiente pasa a la opción 3, el proceso completo se mantiene en la opción 4 y DESHACER en la 5.
+
+La eficacia de la tarea programada y la compatibilidad con Windows Server 2016 siguen pendientes de verificación.

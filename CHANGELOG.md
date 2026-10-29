@@ -1,5 +1,13 @@
 # Historial
 
+## 9.5 — Solución manual y menú actualizado
+- Añade en la opción 2 la reparación manual sin crear ni actualizar tareas programadas.
+- Ofrece en un submenú abrir Administrador del Servidor al finalizar o mantenerlo cerrado.
+- Conserva la vigilancia separada en 3, el proceso completo con vigilancia en 4 y DESHACER en 5.
+- Mantiene las tareas existentes y bloquea la opción manual si la vigilancia propia está en ejecución.
+- Mantiene la reversión de exclusiones propias y actualiza atajos, textos y vista previa.
+- La eficacia automática de la tarea y la compatibilidad con Windows Server 2016 siguen pendientes de verificación.
+
 ## 9.4 — Icono de ventana
 - Incorpora el icono multirresolución de ChromePanelFix en la ventana.
 - Incluye los recursos del icono necesarios para ejecutar y documentar la aplicación.
