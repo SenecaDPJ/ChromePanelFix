@@ -20,7 +20,7 @@ La versión 9.4 incorpora el icono de ChromePanelFix en la ventana y mantiene el
 
 <img width="958" height="776" alt="Captura de pantalla 2026-10-29 233700" src="https://github.com/user-attachments/assets/e24fa92c-0534-4f28-864f-d49b74a88600" />
 
-<img width="1859" height="723" alt="Captura de pantalla 2026-10-29 234231_2" src="https://github.com/user-attachments/assets/8ad7abd6-890a-48d6-a9be-ff24a92a4f61" />
+<img width="1859" height="723" alt="Problema" src="https://github.com/user-attachments/assets/16dd9208-f01f-43a8-be8b-712bb6e0628a" />
 
 ## Inicio rápido
 
