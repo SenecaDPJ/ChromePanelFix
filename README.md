@@ -16,6 +16,12 @@ La versión 9.4 incorpora el icono de ChromePanelFix en la ventana y mantiene el
 
 ![Icono ChromePanelFix](assets/ChromePanelFix-256.png)
 
+<img width="958" height="776" alt="Green_monitor" src="https://github.com/user-attachments/assets/9328adfc-2a63-4f60-85ff-c7df12880c3a" />
+
+<img width="958" height="776" alt="Captura de pantalla 2026-10-29 233700" src="https://github.com/user-attachments/assets/e24fa92c-0534-4f28-864f-d49b74a88600" />
+
+<img width="1859" height="723" alt="Captura de pantalla 2026-10-29 234231_2" src="https://github.com/user-attachments/assets/8ad7abd6-890a-48d6-a9be-ff24a92a4f61" />
+
 ## Inicio rápido
 
 1. Descargue el ZIP de la Release 9.4 y extraiga todos sus archivos juntos, conservando la carpeta assets.
