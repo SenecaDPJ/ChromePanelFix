@@ -8,7 +8,15 @@ Utilidad gráfica en PowerShell para administradores de Windows Server. Ajusta l
 
 La versión 9.5 añade una aplicación manual de la solución sin crear una tarea programada. Las opciones 2–5 muestran submenús con alternativas de apertura. La opción 4 conserva el proceso completo con vigilancia programada.
 
-## Descargar
+**Consigue un Administrador del Servidor limpio de errores.**
+
+<img width="958" height="776" alt="Green_monitor" src="https://github.com/user-attachments/assets/9328adfc-2a63-4f60-85ff-c7df12880c3a" />
+
+**¿Harto de estos errores en tus Servidores por tener Google Chrome instalado?**
+
+<img width="958" height="776" alt="Captura de pantalla 2026-10-29 233700" src="https://github.com/user-attachments/assets/e24fa92c-0534-4f28-864f-d49b74a88600" />
+
+## Descarga y soluciona
 
 [Descargar ChromePanelFix 9.5](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.5) · [Repositorio](https://github.com/SenecaDPJ/ChromePanelFix)
 
@@ -22,13 +30,9 @@ La versión 9.5 añade una aplicación manual de la solución sin crear una tare
 
 
 
-## ¿Harto de este error en tus Servidores?
-<img width="958" height="776" alt="Captura de pantalla 2026-10-29 233700" src="https://github.com/user-attachments/assets/e24fa92c-0534-4f28-864f-d49b74a88600" />
+
 
 <img width="1859" height="723" alt="peoblema_2" src="https://github.com/user-attachments/assets/039dbf2d-f212-4f6f-9884-837c84ab1e7a" />
-
-## Consigue un Administrador del Servidor limpio de errores recurrentes que solo generan confusión.
-<img width="958" height="776" alt="Green_monitor" src="https://github.com/user-attachments/assets/9328adfc-2a63-4f60-85ff-c7df12880c3a" />
 
 ## Inicio rápido
 
