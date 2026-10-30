@@ -27,7 +27,7 @@ La versión 9.5 añade una aplicación manual de la solución sin crear una tare
 
 <img width="1859" height="723" alt="peoblema_2" src="https://github.com/user-attachments/assets/039dbf2d-f212-4f6f-9884-837c84ab1e7a" />
 
-## Consigue un Administrador del Servidor limpio de errores recurrentes que solo generan confusión y en realidad no tienen relevancia.
+## Consigue un Administrador del Servidor limpio de errores recurrentes que solo generan confusión.
 <img width="958" height="776" alt="Green_monitor" src="https://github.com/user-attachments/assets/9328adfc-2a63-4f60-85ff-c7df12880c3a" />
 
 ## Inicio rápido
