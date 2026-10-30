@@ -1,4 +1,4 @@
-﻿#requires -Version 5.1
+#requires -Version 5.1
 [CmdletBinding()]
 param([string]$PreviewPath,[ValidateSet('Menu','ApplyManual','ApplyManualQuiet','Apply','Undo','Exit')][string]$PreviewMode='Menu')
 $ErrorActionPreference='Stop'
@@ -128,9 +128,9 @@ $script:ActionMenus=@{
 $actions=@(
  @('1','Diagnosticar servicios','Solo lectura','Diagnose'),
  @('2','Aplicar solucion manual','Sin crear tarea programada','ManualMenu'),
- @('3','Guardar referencias','Opciones de vigilancia','PrepareMenu'),
- @('4','Ejecutar solucion','Opciones de paneles','ApplyMenu'),
- @('5','DESHACER','Restaurar y abrir paneles','UndoMenu'),
+ @('3','Guardar referencias','Crear vigilancia y mostrar tarea','PrepareMenu'),
+ @('4','Ejecutar solucion','Proceso completo','ApplyMenu'),
+ @('5','DESHACER','Restaurar y mostrar biblioteca','UndoMenu'),
  @('6','Salir','Hasta la proxima','Exit')
 )
 for($i=0;$i -lt $actions.Count;$i++){

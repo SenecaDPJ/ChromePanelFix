@@ -15,11 +15,11 @@
  <text x="40" y="366" fill="#4ADE80">2.</text><rect x="78" y="332" width="320" height="72" fill="#000" stroke="#183529"/>
  <text x="98" y="362">Aplicar solución manual</text><text x="98" y="386">Sin crear tarea programada</text>
  <text x="40" y="450" fill="#4ADE80">3.</text><rect x="78" y="416" width="320" height="72" fill="#000" stroke="#183529"/>
- <text x="98" y="446">Guardar referencias</text><text x="98" y="470">Opciones de vigilancia</text>
+ <text x="98" y="446">Guardar referencias</text><text x="98" y="470">Crear vigilancia y mostrar tarea</text>
  <text x="40" y="534" fill="#4ADE80">4.</text><rect x="78" y="500" width="320" height="72" fill="#000" stroke="#183529"/>
- <text x="98" y="530">Ejecutar solución</text><text x="98" y="554">Opciones de paneles</text>
+ <text x="98" y="530">Ejecutar solucion</text><text x="98" y="554">Proceso completo</text>
  <text x="40" y="618" fill="#4ADE80">5.</text><rect x="78" y="584" width="320" height="72" fill="#000" stroke="#183529"/>
- <text x="98" y="614">DESHACER</text><text x="98" y="638">Restaurar y abrir paneles</text>
+ <text x="98" y="614">DESHACER</text><text x="98" y="638">Restaurar y mostrar biblioteca</text>
  <text x="40" y="702" fill="#4ADE80">6.</text><rect x="78" y="668" width="320" height="72" fill="#000" stroke="#183529"/>
  <text x="98" y="698">Salir</text><text x="98" y="722">Hasta la próxima</text>
 </g>

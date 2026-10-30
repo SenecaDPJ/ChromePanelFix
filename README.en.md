@@ -35,9 +35,9 @@ The confirmation appears when opening the launcher because standard Windows extr
 |---|---|
 | 1 | Read-only service and filter diagnosis; can open Server Manager. |
 | 2 | Apply the solution manually and save the data needed for UNDO. Does not create or update a task. Choose whether to open Server Manager on completion. |
-| 3 | Save references and create monitoring; choose whether to open Task Scheduler Library. |
-| 4 | Apply the complete solution with monitoring; choose both panels, either one or neither. |
-| 5 | UNDO; both panels open by default, with options to choose Server Manager, Task Scheduler or neither. |
+| 3 | “Guardar referencias / Crear vigilancia y mostrar tarea”; choose whether to open Task Scheduler Library. |
+| 4 | “Ejecutar solucion / Proceso completo”; choose both panels, either one or neither. |
+| 5 | “DESHACER / Restaurar y mostrar biblioteca”; both panels open by default, with options to choose Server Manager, Task Scheduler or neither. |
 | 6 | Exit. |
 
 Option 2 preserves any existing monitoring task and warns before continuing. It does not run while the tool's task is active. UNDO still removes the tool's own exclusions and its task if present; the selected panels open after the attempt so you can inspect the result.

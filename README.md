@@ -45,9 +45,9 @@ La confirmación aparece al abrir el lanzador, ya que la extracción estándar d
 |---|---|
 | 1 | Diagnóstico de servicios y filtros, solo lectura; permite abrir Administrador del Servidor. |
 | 2 | Aplicar la solución manual y guardar los datos necesarios para DESHACER. No crea ni actualiza una tarea. El submenú permite abrir Administrador del Servidor al terminar o dejarlo cerrado. |
-| 3 | Guardar referencias y crear vigilancia; el submenú permite abrir Biblioteca del Programador o dejarla cerrada. |
-| 4 | Aplicar el proceso completo con vigilancia; el submenú permite abrir ambos paneles, uno de ellos o ninguno. |
-| 5 | DESHACER; el submenú abre ambos paneles por defecto y permite elegir Administrador del Servidor, Programador de tareas o ninguno. |
+| 3 | Guardar referencias / Crear vigilancia y mostrar tarea; el submenú permite abrir Biblioteca del Programador o dejarla cerrada. |
+| 4 | Ejecutar solucion / Proceso completo; el submenú permite abrir ambos paneles, uno de ellos o ninguno. |
+| 5 | DESHACER / Restaurar y mostrar biblioteca; el submenú abre ambos paneles por defecto y permite elegir Administrador del Servidor, Programador de tareas o ninguno. |
 | 6 | Salir. |
 
 La opción 2 conserva cualquier tarea de vigilancia que ya exista y avisa antes de continuar. No ejecuta si la tarea propia está en curso. DESHACER sigue retirando las exclusiones propias y la tarea propia si existe; abre los paneles elegidos después del intento para facilitar la comprobación.

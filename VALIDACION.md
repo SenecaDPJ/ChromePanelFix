@@ -4,7 +4,7 @@
 
 La implementación añade la solución manual como acción distinta de `Prepare` y `Apply`. La ruta manual reutiliza la escritura segura y el registro reversible de `Invoke-DirectSolution`; no llama a `Prepare-Watch`, no registra una tarea y no cambia una tarea existente. Se comprueba la tarea propia antes de actuar y se rechaza la ejecución si está activa. El usuario confirmó que la opción 2 funciona en su Windows Server.
 
-Tras esa prueba, se añadieron submenús a las opciones 3, 4 y 5. DESHACER abre ambos paneles por defecto, incluso después de un intento con error, y el Programador de tareas tiene una alternativa de apertura directa si MMC no confirma la Biblioteca. La corrección y el nuevo diseño aún requieren una prueba del usuario.
+El usuario confirmó también que la funcionalidad y los nuevos submenús son correctos. En esta revisión se restauran en la interfaz los rótulos originales de las opciones 3, 4 y 5; únicamente se añadió la solución manual en la opción 2. Las vistas previas se actualizaron para reflejar los nombres restaurados.
 
 Comprobaciones locales realizadas el 30-10-2026:
 
@@ -15,7 +15,7 @@ Comprobaciones locales realizadas el 30-10-2026:
 - Las vistas previas SVG ilustran la interfaz ajustada y los submenús 2–5; son composiciones de diseño, no capturas de una ejecución real.
 - El ZIP contiene la misma distribución que la carpeta; el manifiesto incluye 23 archivos y el sidecar coincide con la huella SHA-256 del ZIP.
 
-No se ejecutó el motor de cambios: la política de ejecución local bloquea los archivos `.ps1`. La prueba funcional de DESHACER, los nuevos submenús y el ajuste visual sigue pendiente en Windows Server. También siguen pendientes la eficacia de las ejecuciones automáticas y la compatibilidad con Windows Server 2016.
+No se ejecutó el motor de cambios en este equipo: la política de ejecución local bloquea los archivos `.ps1`. La funcionalidad de DESHACER, los nuevos submenús y el ajuste visual ya fueron confirmados por el usuario en Windows Server. Siguen pendientes la eficacia de las ejecuciones automáticas y la compatibilidad con Windows Server 2016.
 
 ## ChromePanelFix 9.4
 

@@ -6,6 +6,8 @@ La versión 9.5 añade una opción de solución manual que aplica los filtros de
 
 La opción manual conserva cualquier tarea ya existente, avisa de ello y no continúa si la tarea propia está ejecutándose. El fallo al abrir el Administrador del Servidor se informa por separado de la reparación. El tamaño inicial se ajusta al área disponible de pantalla y la distribución vertical de los botones queda corregida.
 
+Los botones existentes conservan sus nombres anteriores; la nueva solución manual se incorpora como botón 2.
+
 **Pendiente de verificar:** eficacia de las ejecuciones automáticas de la tarea y compatibilidad con Windows Server 2016. Licencia MIT.
 
 ## English
@@ -13,5 +15,7 @@ La opción manual conserva cualquier tarea ya existente, avisa de ello y no cont
 Version 9.5 adds a manual solution path that applies the Google Update filters, preserves the data needed for UNDO, and does not create or update a scheduled task. Options 2–5 show submenus for choosing which panels to open. UNDO opens both panels by default and still opens them after a failed attempt for inspection. Separate monitoring moves to option 3; the complete workflow remains available as option 4.
 
 The manual option preserves any existing task, warns the user, and stops if the tool's task is running. Failure to open Server Manager is reported separately from the repair result. The initial window size adapts to the available screen area, and the button layout no longer overflows vertically.
+
+Existing buttons keep their original names; the manual solution is added as button 2.
 
 **Still to verify:** scheduled-task effectiveness and Windows Server 2016 compatibility. MIT License.

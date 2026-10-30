@@ -9,6 +9,7 @@
 - Conserva la vigilancia separada en 3, el proceso completo con vigilancia en 4 y DESHACER en 5.
 - Mantiene las tareas existentes y bloquea la opción manual si la vigilancia propia está en ejecución.
 - Mantiene la reversión de exclusiones propias y actualiza atajos, textos y vista previa.
+- Conserva los rótulos originales de las opciones existentes; solo añade la nueva solución manual como opción 2.
 - La eficacia automática de la tarea y la compatibilidad con Windows Server 2016 siguen pendientes de verificación.
 
 ## 9.4 — Icono de ventana
