@@ -7,6 +7,6 @@
 - Assets: `ChromePanelFix_9.5_GUI-OPERATIVO.zip` y su sidecar SHA-256.
 - Licencia: MIT.
 
-La 9.5 añade la aplicación manual de la solución sin crear ni actualizar una tarea programada. Las opciones 2–5 ofrecen submenús para elegir qué paneles abrir. La vigilancia independiente pasa a la opción 3, el proceso completo se mantiene en la opción 4 y DESHACER en la 5. Las opciones existentes conservan los rótulos anteriores; solo se incorpora la nueva solución manual como opción 2. La PR sigue en borrador y la Release/tag `v9.5` no están publicadas.
+La 9.5 añade la aplicación manual de la solución sin crear ni actualizar una tarea programada. Las opciones 2–5 ofrecen submenús para elegir qué paneles abrir. La vigilancia independiente pasa a la opción 3, el proceso completo se mantiene en la opción 4 y DESHACER en la 5. Las opciones existentes conservan los rótulos anteriores; solo se incorpora la nueva solución manual como opción 2. Publicar la etiqueta `v9.5` junto con el ZIP de distribución y su sidecar SHA-256.
 
 La eficacia de la tarea programada y la compatibilidad con Windows Server 2016 siguen pendientes de verificación.
