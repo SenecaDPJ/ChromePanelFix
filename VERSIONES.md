@@ -1,7 +1,7 @@
 # Política de versiones
 
-- 9.5 GUI OPERATIVO está en el borrador de la PR #13. Añade solución manual, submenús para elegir paneles y ajuste adaptable de la ventana.
-- 9.4 GUI OPERATIVO es la última Release publicada. Incorpora el icono de ChromePanelFix en la ventana y conserva las funciones verificadas de 9.3.
+- 9.5 GUI OPERATIVO añade solución manual, submenús para elegir paneles, ajuste adaptable de ventana y conserva los rótulos originales de las opciones existentes.
+- 9.4 GUI OPERATIVO fue la edición publicada antes de 9.5. Incorpora el icono de ChromePanelFix en la ventana y conserva las funciones verificadas de 9.3.
 - La Release 9.3 y sus archivos de distribución se conservan como versión anterior.
 - 9.3 añade firma, acceso confirmado a GitHub y cabecera ajustada para que el nombre de la aplicación quede visible.
 - 9.2 integra el consentimiento interactivo para retirar Zone.Identifier, limpieza de referencias MMC y recuperación de procesos.
