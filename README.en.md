@@ -8,17 +8,25 @@ A PowerShell graphical utility for Windows Server administrators. It adjusts ser
 
 Version 9.5 adds a manual solution path that does not create a scheduled task. Options 2–5 now show submenus with their panel-opening choices. Option 4 keeps the complete workflow with scheduled monitoring.
 
-## Download
+**Get a Server Administrator free of errors.**
+
+<img width="958" height="776" alt="Green_monitor" src="https://github.com/user-attachments/assets/9328adfc-2a63-4f60-85ff-c7df12880c3a" />
+
+**Fed up with errors on your servers caused by having Google Chrome installed?**
+
+<img width="958" height="776" alt="Captura de pantalla 2026-10-29 233700" src="https://github.com/user-attachments/assets/e24fa92c-0534-4f28-864f-d49b74a88600" />
+
+## Download and fix it.
 
 [Download ChromePanelFix 9.5](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.5) · [Repository](https://github.com/SenecaDPJ/ChromePanelFix)
+
+![ChromePanelFix icon](assets/ChromePanelFix-256.png)
 
 ![ChromePanelFix 9.5 interface preview](Vista-previa-interfaz.svg)
 
 ![Manual solution submenu](Vista-previa-submenu.png)
 
 ![Submenus for options 2–5](Vista-previa-submenus.svg)
-
-![ChromePanelFix icon](assets/ChromePanelFix-256.png)
 
 ## Quick start
 
