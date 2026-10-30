@@ -16,7 +16,7 @@ foreach ($item in $processes) {
     $commandLine = [string]$item.CommandLine
     $role = $null
     $action = ''
-    if ($commandLine -match '(?i)ChromePanelFix-9\.2-GUI-OPERATIVO') {
+    if ($commandLine -match '(?i)ChromePanelFix-9\.[0-9]+-GUI-OPERATIVO') {
         $role = 'Interfaz ChromePanelFix'
     } elseif ($commandLine -match '(?i)ChromePanelFix\.Core\.ps1') {
         $role = 'Proceso de accion ChromePanelFix'
@@ -25,7 +25,7 @@ foreach ($item in $processes) {
     } elseif ($windows.ContainsKey([int]$item.ProcessId)) {
         $role = 'Interfaz ChromePanelFix'
     }
-    if ($commandLine -match '(?i)-Action\s+(Diagnose|Prepare|Apply|Watch|Undo)') {
+    if ($commandLine -match '(?i)-Action\s+(Diagnose|Prepare|ApplyManual|Apply|Watch|Undo)') {
         $action = $Matches[1]
         if ($action -eq 'Watch') { $role = 'Tarea de vigilancia' }
     }

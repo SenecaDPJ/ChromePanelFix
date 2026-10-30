@@ -1,13 +1,13 @@
 @echo off
 setlocal
-set "APP=%~dp0ChromePanelFix_9.4_GUI-OPERATIVO.ps1"
+set "APP=%~dp0ChromePanelFix_9.5_GUI-OPERATIVO.ps1"
 set "APPDIR=%~dp0"
 set "CHROMEPANELFIX_SCRIPT=%APP%"
 set "CHROMEPANELFIX_DIR=%APPDIR%"
 set "PS51=%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"
 
 if not exist "%APP%" (
-  echo ERROR: No se encuentra ChromePanelFix_9.4_GUI-OPERATIVO.ps1.
+  echo ERROR: No se encuentra ChromePanelFix_9.5_GUI-OPERATIVO.ps1.
   echo Extraiga todos los archivos del ZIP en una misma carpeta.
   pause
   exit /b 2
@@ -50,5 +50,5 @@ if not "%PREFLIGHT%"=="0" if not "%PREFLIGHT%"=="10" (
   exit /b 5
 )
 
-start "" "%PS51%" -NoProfile -STA -WindowStyle Hidden -Command "try { & $env:CHROMEPANELFIX_SCRIPT } catch { Add-Type -AssemblyName System.Windows.Forms; [void][System.Windows.Forms.MessageBox]::Show(('No se pudo iniciar ChromePanelFix 9.4.' + [Environment]::NewLine + [Environment]::NewLine + [string]$_.Exception.Message + [Environment]::NewLine + [Environment]::NewLine + 'Respete la politica de ejecucion de su organizacion. Si requiere scripts firmados, consulte al administrador.'), 'ChromePanelFix 9.4', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error); exit 1 } # ChromePanelFix-9.4-GUI-OPERATIVO"
+start "" "%PS51%" -NoProfile -STA -WindowStyle Hidden -Command "try { & $env:CHROMEPANELFIX_SCRIPT } catch { Add-Type -AssemblyName System.Windows.Forms; [void][System.Windows.Forms.MessageBox]::Show(('No se pudo iniciar ChromePanelFix 9.5.' + [Environment]::NewLine + [Environment]::NewLine + [string]$_.Exception.Message + [Environment]::NewLine + [Environment]::NewLine + 'Respete la politica de ejecucion de su organizacion. Si requiere scripts firmados, consulte al administrador.'), 'ChromePanelFix 9.5', [System.Windows.Forms.MessageBoxButtons]::OK, [System.Windows.Forms.MessageBoxIcon]::Error); exit 1 } # ChromePanelFix-9.5-GUI-OPERATIVO"
 exit /b

@@ -1,4 +1,4 @@
-# ChromePanelFix 9.4 — GUI OPERATIVO
+# ChromePanelFix 9.5 — GUI OPERATIVO
 
 [Español](README.md) · [English](README.en.md)
 
@@ -6,22 +6,26 @@
 
 A PowerShell graphical utility for Windows Server administrators. It adjusts service filters in the Local Server and All Servers dashboards for the current administrator profile.
 
-Version 9.4 adds the ChromePanelFix icon to the application window and keeps the verified 9.3 workflow.
+Version 9.5 adds a manual solution path that does not create a scheduled task. Options 2–5 now show submenus with their panel-opening choices. Option 4 keeps the complete workflow with scheduled monitoring.
 
 ## Download
 
-[Download ChromePanelFix 9.4](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.4) · [Repository](https://github.com/SenecaDPJ/ChromePanelFix)
+[Download ChromePanelFix 9.5](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.5) · [Repository](https://github.com/SenecaDPJ/ChromePanelFix)
 
-![ChromePanelFix 9.3 menu preview; its workflow is preserved in 9.4](Vista-previa.png)
+![ChromePanelFix 9.5 interface preview](Vista-previa-interfaz.svg)
+
+![Manual solution submenu](Vista-previa-submenu.png)
+
+![Submenus for options 2–5](Vista-previa-submenus.svg)
 
 ![ChromePanelFix icon](assets/ChromePanelFix-256.png)
 
 ## Quick start
 
-1. Download the 9.4 release ZIP and extract all files together, keeping the assets folder.
+1. Download the 9.5 release ZIP and extract all files together, keeping the assets folder.
 2. Open Abrir-ChromePanelFix.cmd.
 3. If Windows marks scripts as downloaded from the Internet, the launcher asks whether you trust them. Press S to remove Zone.Identifier only from marked .ps1 files in this folder and continue, or N to exit without changing them.
-4. Choose 3 for the complete workflow; options 1 and 2 are not prerequisites.
+4. Choose 2 to apply the solution manually, or 4 for the complete workflow with monitoring.
 
 The confirmation appears when opening the launcher because standard Windows extraction does not allow this project to add a custom prompt. The operation does not change or bypass PowerShell's execution policy. If your organization's policy requires signed scripts, contact your administrator.
 
@@ -30,10 +34,13 @@ The confirmation appears when opening the launcher because standard Windows extr
 | Option | Action |
 |---|---|
 | 1 | Read-only service and filter diagnosis; can open Server Manager. |
-| 2 | Save references, create and verify the tool's task; open Task Scheduler Library. |
-| 3 | Apply exclusions, save references, install and verify monitoring; open Server Manager and Task Scheduler Library. |
-| 4 | Undo tool-owned exclusions, remove its task and references; verify and open Task Scheduler Library. |
-| 5 | Exit. |
+| 2 | Apply the solution manually and save the data needed for UNDO. Does not create or update a task. Choose whether to open Server Manager on completion. |
+| 3 | “Guardar referencias / Crear vigilancia y mostrar tarea”; choose whether to open Task Scheduler Library. |
+| 4 | “Ejecutar solucion / Proceso completo”; choose both panels, either one or neither. |
+| 5 | “DESHACER / Restaurar y mostrar biblioteca”; both panels open by default, with options to choose Server Manager, Task Scheduler or neither. |
+| 6 | Exit. |
+
+Option 2 preserves any existing monitoring task and warns before continuing. It does not run while the tool's task is active. UNDO still removes the tool's own exclusions and its task if present; the selected panels open after the attempt so you can inspect the result.
 
 The tool adjusts dashboard filters. It does not delete or disable Google services, tasks or files; it does not delete events or certify Chrome updates. Actual update failures must be diagnosed separately.
 
