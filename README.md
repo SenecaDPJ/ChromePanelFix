@@ -20,17 +20,19 @@ La versión 9.5 añade una aplicación manual de la solución sin crear una tare
 
 [Descargar ChromePanelFix 9.5](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.5) · [Repositorio](https://github.com/SenecaDPJ/ChromePanelFix)
 
+![Icono ChromePanelFix](assets/ChromePanelFix-256.png)
+
 ![Vista previa de la interfaz 9.5](Vista-previa-interfaz.svg)
 
 ![Submenú de la solución manual](Vista-previa-submenu.png)
 
 ![Submenús de las opciones 2–5](Vista-previa-submenus.svg)
 
-![Icono ChromePanelFix](assets/ChromePanelFix-256.png)
 
 
 
 
+**Detalle de errores**
 
 <img width="1859" height="723" alt="peoblema_2" src="https://github.com/user-attachments/assets/039dbf2d-f212-4f6f-9884-837c84ab1e7a" />
 
