@@ -6,15 +6,17 @@
 
 A PowerShell graphical utility for Windows Server administrators. It adjusts service filters in the Local Server and All Servers dashboards for the current administrator profile.
 
-Version 9.5 adds a manual solution path that does not create a scheduled task. Its submenu lets you open Server Manager when the operation finishes or leave it closed. Option 4 keeps the complete workflow with scheduled monitoring.
+Version 9.5 adds a manual solution path that does not create a scheduled task. Options 2–5 now show submenus with their panel-opening choices. Option 4 keeps the complete workflow with scheduled monitoring.
 
 ## Download
 
 [Download ChromePanelFix 9.5](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.5) · [Repository](https://github.com/SenecaDPJ/ChromePanelFix)
 
-![ChromePanelFix 9.5 menu preview](Vista-previa.png)
+![ChromePanelFix 9.5 interface preview](Vista-previa-interfaz.svg)
 
 ![Manual solution submenu](Vista-previa-submenu.png)
+
+![Submenus for options 2–5](Vista-previa-submenus.svg)
 
 ![ChromePanelFix icon](assets/ChromePanelFix-256.png)
 
@@ -32,13 +34,13 @@ The confirmation appears when opening the launcher because standard Windows extr
 | Option | Action |
 |---|---|
 | 1 | Read-only service and filter diagnosis; can open Server Manager. |
-| 2 | Apply the solution manually and save the data needed for UNDO. Does not create or update a task. The submenu lets you open Server Manager on completion or leave it closed. |
-| 3 | Save references, create and verify the tool's task; open Task Scheduler Library. |
-| 4 | Apply exclusions, save references, install and verify monitoring; open Server Manager and Task Scheduler Library. |
-| 5 | Undo tool-owned exclusions, remove its task if present, and remove references; verify and open Task Scheduler Library. |
+| 2 | Apply the solution manually and save the data needed for UNDO. Does not create or update a task. Choose whether to open Server Manager on completion. |
+| 3 | Save references and create monitoring; choose whether to open Task Scheduler Library. |
+| 4 | Apply the complete solution with monitoring; choose both panels, either one or neither. |
+| 5 | UNDO; both panels open by default, with options to choose Server Manager, Task Scheduler or neither. |
 | 6 | Exit. |
 
-Option 2 preserves any existing monitoring task and warns before continuing. It does not run while the tool's task is active. UNDO still removes the tool's own exclusions and its task if present.
+Option 2 preserves any existing monitoring task and warns before continuing. It does not run while the tool's task is active. UNDO still removes the tool's own exclusions and its task if present; the selected panels open after the attempt so you can inspect the result.
 
 The tool adjusts dashboard filters. It does not delete or disable Google services, tasks or files; it does not delete events or certify Chrome updates. Actual update failures must be diagnosed separately.
 

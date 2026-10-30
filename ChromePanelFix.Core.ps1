@@ -14,7 +14,8 @@ param(
  [ValidateSet('Menu','Diagnose','Prepare','ApplyManual','Apply','Watch','Undo')][string]$Action='Menu',
  [string]$ExpectedSid,
  [ValidatePattern('^[a-fA-F0-9]{32}$')][string]$UiSession,
- [switch]$SkipManager
+ [switch]$SkipManager,
+ [switch]$SkipTaskScheduler
 )
 Set-StrictMode -Version Latest
 $ErrorActionPreference='Stop'
@@ -51,11 +52,12 @@ function Test-Admin {
  $p.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 function Invoke-Elevated {
- param([string]$Requested,[switch]$SkipManager)
+ param([string]$Requested,[switch]$SkipManager,[switch]$SkipTaskScheduler)
  if($Action -eq 'Watch'){throw 'La tarea no puede solicitar UAC. Instalela con la opcion 3.'}
  $exe=Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
  $arguments='-NoProfile -File "'+$script:Source+'" -Action '+$Requested+' -ExpectedSid "'+$script:Sid+'"'
  if($SkipManager){$arguments+=' -SkipManager'}
+ if($SkipTaskScheduler){$arguments+=' -SkipTaskScheduler'}
  if($script:locked){$script:mutex.ReleaseMutex();$script:locked=$false}
  try{
   $process=Start-Process -FilePath $exe -Verb RunAs -ArgumentList $arguments -Wait -PassThru
@@ -319,6 +321,14 @@ function Find-SchedulerLibrary {
  }
  return $null
 }
+function Open-ServerManager {
+ $manager=Join-Path $env:SystemRoot 'System32\ServerManager.exe'
+ try{
+  if(-not (Test-Path -LiteralPath $manager)){throw 'No se encuentra ServerManager.exe.'}
+  Start-Process -FilePath $manager -WindowStyle Normal -ErrorAction Stop | Out-Null
+  Write-Host 'Administrador del Servidor abierto.'
+ }catch{Write-Host ('No se pudo abrir el Administrador del Servidor: '+$_.Exception.Message)}
+}
 function Open-WatchTaskScheduler {
  $console=Join-Path $env:SystemRoot 'System32\taskschd.msc'
  $log=Join-Path $env:TEMP 'ChromePanelFix-Biblioteca.log'
@@ -352,6 +362,11 @@ function Open-WatchTaskScheduler {
   try{('Fecha: '+(Get-Date).ToString('o')+[Environment]::NewLine+$_) | Set-Content -LiteralPath $log -Encoding UTF8}catch{}
   Write-Host ('Operacion realizada; apertura de Biblioteca NO confirmada: '+$message)
   Write-Host ('Registro: '+$log)
+  try{
+   if(-not (Test-Path -LiteralPath $console)){throw 'No se encuentra taskschd.msc.'}
+   Start-Process -FilePath $console -WindowStyle Normal -ErrorAction Stop | Out-Null
+   Write-Host 'Programador de tareas abierto mediante taskschd.msc; no se pudo confirmar el nodo Biblioteca.'
+  }catch{Write-Host ('No se pudo abrir el Programador de tareas: '+$_.Exception.Message)}
  }finally{
   # MMC permanece bajo control del usuario; cerrar todas las referencias COM del worker.
   foreach($comObject in @($activeNode,$activeView,$view,$library,$root,$namespace,$document,$mmc)){
@@ -382,11 +397,12 @@ function Confirm-WatchInstallation {
  }
 }
 function Invoke-CompleteSolution {
+ param([switch]$SkipManager,[switch]$SkipTaskScheduler)
  if($WhatIfPreference){
   [void]$PSCmdlet.ShouldProcess('Filtros, vigilancia y Administrador del Servidor','Aplicar la solucion completa')
   return
  }
- if(-not (Test-Admin)){Invoke-Elevated 'Apply';return}
+ if(-not (Test-Admin)){Invoke-Elevated 'Apply' -SkipManager:$SkipManager -SkipTaskScheduler:$SkipTaskScheduler;return}
  $manager=Join-Path $env:SystemRoot 'System32\ServerManager.exe'
  if(-not (Test-Path -LiteralPath $manager)){throw 'Administrador del Servidor no esta instalado.'}
  $tasks=@(Get-OwnTask)
@@ -401,10 +417,10 @@ function Invoke-CompleteSolution {
   Write-Host '[2/3] Guardar referencias y crear o actualizar la vigilancia...'
   Prepare-Watch
   Confirm-WatchInstallation
-  Write-Host '[3/3] Abrir Administrador del Servidor para comprobar el resultado...'
-  Start-Process -FilePath $manager -WindowStyle Normal | Out-Null
-  Open-WatchTaskScheduler
-  Write-Host 'Proceso completo: filtros procesados, vigilancia instalada y comprobada, apertura del panel solicitada.' -ForegroundColor Green
+  Write-Host '[3/3] Abrir los paneles seleccionados...'
+  if(-not $SkipManager){Open-ServerManager}
+  if(-not $SkipTaskScheduler){Open-WatchTaskScheduler}
+  Write-Host 'Proceso completo: filtros procesados y vigilancia instalada y comprobada.' -ForegroundColor Green
   Write-Host 'Compruebe los recuadros Servidor local y Todos los servidores.'
  }catch{
   throw ('Proceso incompleto: '+$_.Exception.Message+' Los pasos ya aplicados se conservan; puede volver a ejecutar 4.')
@@ -458,14 +474,17 @@ function Confirm-Action24 {
  Write-Host 'Operacion terminada y verificada.'
 }
 function Run-Action {
- param([string]$Selected,[switch]$SkipManager)
- if($Selected -in @('Prepare','Undo') -and -not $WhatIfPreference -and -not (Test-Admin)){Invoke-Elevated $Selected;return}
+ param([string]$Selected,[switch]$SkipManager,[switch]$SkipTaskScheduler)
+ if($Selected -in @('Prepare','Undo') -and -not $WhatIfPreference -and -not (Test-Admin)){Invoke-Elevated $Selected -SkipManager:$SkipManager -SkipTaskScheduler:$SkipTaskScheduler;return}
  try{
   switch($Selected){
    Diagnose{Show-Diagnosis}
    Prepare{
     Prepare-Watch
-    if(-not $WhatIfPreference -and $script:PrepareCompleted){Confirm-Action24 'Prepare';Open-WatchTaskScheduler}
+    if(-not $WhatIfPreference -and $script:PrepareCompleted){
+     Confirm-Action24 'Prepare'
+     if(-not $SkipTaskScheduler){Open-WatchTaskScheduler}
+    }
    }
    ApplyManual{
     Write-Host 'EJECUCION MANUAL: aplica los filtros y no crea ni actualiza una tarea programada.' -ForegroundColor Cyan
@@ -474,14 +493,24 @@ function Run-Action {
    Apply{
     Write-Host 'EJECUCION DIRECTA: no necesita ejecutar antes las opciones 1, 2 ni 3.' -ForegroundColor Cyan
     Write-Host 'Incluye reparacion, referencias, tarea de vigilancia y apertura del Administrador del Servidor.'
-    Invoke-CompleteSolution
+    Invoke-CompleteSolution -SkipManager:$SkipManager -SkipTaskScheduler:$SkipTaskScheduler
    }
    Watch{Invoke-Watch}
-   Undo{Undo-All;if(-not $WhatIfPreference -and $script:UndoCompleted){Confirm-Action24 'Undo';Open-WatchTaskScheduler}}
+   Undo{
+    try{
+     Undo-All
+     if(-not $WhatIfPreference -and $script:UndoCompleted){Confirm-Action24 'Undo'}
+    }finally{
+     if(-not $WhatIfPreference){
+      if(-not $SkipManager){Open-ServerManager}
+      if(-not $SkipTaskScheduler){Open-WatchTaskScheduler}
+     }
+    }
+   }
   }
  }catch [UnauthorizedAccessException]{
   if(Test-Admin){throw}
-  Invoke-Elevated $Selected -SkipManager:$SkipManager
+  Invoke-Elevated $Selected -SkipManager:$SkipManager -SkipTaskScheduler:$SkipTaskScheduler
  }
 }
 # Lectura/escritura NRBF sin BinaryFormatter ni instanciacion de tipos del archivo.
@@ -681,7 +710,7 @@ try{
  try{$locked=$mutex.WaitOne(0)}catch [Threading.AbandonedMutexException]{$locked=$true}
  if(-not $locked){throw 'Otra ejecucion de esta herramienta esta activa en esta sesion.'}
  if($Action -ne 'Menu'){
-  try{Run-Action $Action -SkipManager:$SkipManager;Write-VisualEvent -Kind Completed -Text 'Operacion completada.'}
+  try{Run-Action $Action -SkipManager:$SkipManager -SkipTaskScheduler:$SkipTaskScheduler;Write-VisualEvent -Kind Completed -Text 'Operacion completada.'}
   catch{Write-VisualEvent -Kind Error -Text $_.Exception.Message;throw}
   return
  }

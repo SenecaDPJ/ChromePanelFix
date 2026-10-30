@@ -6,15 +6,17 @@
 
 Utilidad gráfica en PowerShell para administradores de Windows Server. Ajusta los filtros de servicios de los paneles «Servidor local» y «Todos los servidores» en el perfil del administrador actual.
 
-La versión 9.5 añade una aplicación manual de la solución sin crear una tarea programada. Desde su submenú puedes abrir el Administrador del Servidor al terminar o dejarlo cerrado. La opción 4 conserva el proceso completo con vigilancia programada.
+La versión 9.5 añade una aplicación manual de la solución sin crear una tarea programada. Las opciones 2–5 muestran submenús con alternativas de apertura. La opción 4 conserva el proceso completo con vigilancia programada.
 
 ## Descargar
 
 [Descargar ChromePanelFix 9.5](https://github.com/SenecaDPJ/ChromePanelFix/releases/tag/v9.5) · [Repositorio](https://github.com/SenecaDPJ/ChromePanelFix)
 
-![Vista previa del menú 9.5](Vista-previa.png)
+![Vista previa de la interfaz 9.5](Vista-previa-interfaz.svg)
 
 ![Submenú de la solución manual](Vista-previa-submenu.png)
+
+![Submenús de las opciones 2–5](Vista-previa-submenus.svg)
 
 ![Icono ChromePanelFix](assets/ChromePanelFix-256.png)
 
@@ -43,12 +45,12 @@ La confirmación aparece al abrir el lanzador, ya que la extracción estándar d
 |---|---|
 | 1 | Diagnóstico de servicios y filtros, solo lectura; permite abrir Administrador del Servidor. |
 | 2 | Aplicar la solución manual y guardar los datos necesarios para DESHACER. No crea ni actualiza una tarea. El submenú permite abrir Administrador del Servidor al terminar o dejarlo cerrado. |
-| 3 | Guardar referencias, crear y comprobar la tarea propia; abrir Biblioteca del Programador. |
-| 4 | Aplicar exclusiones, guardar referencias, instalar y comprobar vigilancia; abrir Administrador del Servidor y Biblioteca del Programador. |
-| 5 | Revertir exclusiones propias, retirar la tarea y referencias; comprobar y abrir Biblioteca del Programador. |
+| 3 | Guardar referencias y crear vigilancia; el submenú permite abrir Biblioteca del Programador o dejarla cerrada. |
+| 4 | Aplicar el proceso completo con vigilancia; el submenú permite abrir ambos paneles, uno de ellos o ninguno. |
+| 5 | DESHACER; el submenú abre ambos paneles por defecto y permite elegir Administrador del Servidor, Programador de tareas o ninguno. |
 | 6 | Salir. |
 
-La opción 2 conserva cualquier tarea de vigilancia que ya exista y avisa antes de continuar. No ejecuta si la tarea propia está en curso. DESHACER sigue retirando las exclusiones propias y la tarea propia si existe.
+La opción 2 conserva cualquier tarea de vigilancia que ya exista y avisa antes de continuar. No ejecuta si la tarea propia está en curso. DESHACER sigue retirando las exclusiones propias y la tarea propia si existe; abre los paneles elegidos después del intento para facilitar la comprobación.
 
 La herramienta ajusta filtros del panel. No elimina ni deshabilita servicios, tareas o archivos de Google, no borra eventos y no certifica que Chrome se haya actualizado. Los fallos reales de actualización deben diagnosticarse por separado.
 
